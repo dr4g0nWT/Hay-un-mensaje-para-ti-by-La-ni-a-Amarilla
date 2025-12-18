@@ -1,0 +1,157 @@
+/* --- Sección Oasis Virtual (Full Screen) --- */
+
+.oasis-section {
+    width: 100%;
+    /* Altura mínima del 100% de la ventana del navegador */
+    min-height: 100vh;
+
+    /* Flexbox para centrar todo el contenido vertical y horizontalmente */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* Centrado vertical */
+    align-items: center;
+    /* Centrado horizontal */
+
+    /* Gradiente de fondo */
+    background: linear-gradient(90deg, #fffbd5 0%, #fde4ce 40%, #f5a89e 100%);
+
+    padding: 20px;
+    /* Un poco de margen de seguridad */
+    box-sizing: border-box;
+
+    /* Opcional: Si usas scroll-snap en tu web, añade esto: */
+    scroll-snap-align: start;
+}
+
+.oasis-container {
+    max-width: 1200px;
+    width: 100%;
+    text-align: center;
+    /* Asegura que el contenedor no sea más alto que la pantalla */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Título */
+.oasis-title {
+    font-family: 'Georgia', serif;
+    color: #fdbb4b;
+    font-size: 3.5rem;
+    /* Un poco más grande para pantallas full */
+    margin-bottom: 5vh;
+    /* Usamos vh para que el margen sea proporcional a la altura */
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+/* Contenedor Flex para 2 columnas */
+.oasis-content-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 60px;
+    /* Más espacio entre video y texto */
+    text-align: left;
+}
+
+/* Columna del Video */
+.oasis-media {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    /* Empuja el video hacia el centro */
+}
+
+.oasis-video {
+    width: 100%;
+    max-width: 550px;
+    /* Limitamos el ancho para que no sea gigante */
+    height: auto;
+    border-radius: 30px;
+    display: block;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* Columna de Texto */
+.oasis-text {
+    flex: 1;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.oasis-text p {
+    color: #2c2c2c;
+    font-size: 1.2rem;
+    /* Texto un poco más legible */
+    line-height: 1.6;
+    margin-bottom: 40px;
+    font-weight: 500;
+}
+
+/* Botón */
+.oasis-btn {
+    background-color: #f9a62b;
+    color: white;
+    text-decoration: none;
+    padding: 18px 35px;
+    border-radius: 50px;
+    font-weight: bold;
+    font-size: 1rem;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: transform 0.2s, box-shadow 0.2s;
+    border: 2px solid white;
+    box-shadow: 0 4px 10px rgba(249, 166, 43, 0.4);
+}
+
+.oasis-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(249, 166, 43, 0.6);
+}
+
+/* Decoración (Flores) */
+.oasis-decoration {
+    margin-top: 30px;
+    width: 100%;
+}
+
+.oasis-decoration img {
+    max-width: 250px;
+    height: auto;
+    display: block;
+}
+
+/* --- Responsividad (Móvil) --- */
+@media (max-width: 900px) {
+    .oasis-section {
+        height: auto;
+        /* En móvil permitimos scroll normal si el contenido es muy largo */
+        min-height: 100vh;
+        padding: 60px 20px;
+    }
+
+    .oasis-title {
+        font-size: 2.5rem;
+        margin-bottom: 30px;
+    }
+
+    .oasis-content-wrapper {
+        flex-direction: column;
+        gap: 40px;
+    }
+
+    .oasis-text {
+        align-items: center;
+        text-align: center;
+        max-width: 100%;
+    }
+
+    .oasis-media {
+        justify-content: center;
+    }
+}

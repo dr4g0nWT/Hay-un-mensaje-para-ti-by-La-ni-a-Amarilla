@@ -1,0 +1,43 @@
+.validation-box {
+    background: #f9f9f9;
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    font-size: 0.85rem;
+    text-align: left;
+    border: 1px solid #eee;
+    display: none;
+    /* Oculto por defecto */
+}
+
+.requirement {
+    margin: 5px 0;
+    color: #999;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.requirement.valid {
+    color: #2ecc71;
+}
+
+/* Verde */
+.requirement.invalid {
+    color: #e74c3c;
+}
+
+/* Rojo */
+
+.requirement::before {
+    content: '○';
+    font-weight: bold;
+}
+
+.requirement.valid::before {
+    content: '✓';
+}
+
+.requirement.invalid::before {
+    content: '✕';
+}

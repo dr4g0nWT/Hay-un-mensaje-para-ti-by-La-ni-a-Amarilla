@@ -33,6 +33,73 @@
 
 /* === 2. EL GRID INVISIBLE (LA SOLUCIÓN AL SOLAPAMIENTO) === */
 /* Esto crea dos columnas: 50% Izquierda (Texto) | 50% Derecha (Espacio Buzón) */
+
+/* === MENÚ DESPLEGABLE === */
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+
+    /* CAMBIO CLAVE: Antes era 0. Ahora ponemos 60px.
+       Esto coincide con el padding-left del header (.top-header),
+       así queda perfectamente alineado con el icono y el texto. */
+    left: 60px;
+
+    width: 250px;
+    background-color: #fffaf0;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 0 0 15px 15px;
+    /* Redondeamos ambas esquinas de abajo para que quede más suave */
+    padding: 20px;
+
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-20px);
+    transition: all 0.3s ease;
+    z-index: 998;
+}
+
+/* Estado Activo (Cuando JS le añade la clase 'active') */
+.dropdown-menu.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.dropdown-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.dropdown-menu li {
+    margin-bottom: 15px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    padding-bottom: 10px;
+}
+
+.dropdown-menu li:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+.menu-link {
+    text-decoration: none;
+    color: #4a3b2a;
+    /* Marrón oscuro */
+    font-family: var(--font-main);
+    font-weight: bold;
+    font-size: 1rem;
+    display: block;
+    transition: color 0.2s;
+}
+
+.menu-link:hover {
+    color: var(--orange-btn);
+    /* Naranja al pasar el ratón */
+    transform: translateX(5px);
+    /* Pequeño desplazamiento a la derecha */
+}
+
 .hero-layout {
     width: 100%;
     height: 100%;
@@ -350,5 +417,13 @@
 
     .menu-icon {
         width: 28px;
+    }
+
+    .dropdown-menu {
+        /* En móvil el padding del header era de 25px, así que ajustamos el menú igual */
+        left: 25px;
+
+        /* Opcional: hacerlo un poco más estrecho en móvil si quieres */
+        width: 200px;
     }
 }
