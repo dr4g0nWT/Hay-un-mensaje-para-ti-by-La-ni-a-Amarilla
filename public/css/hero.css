@@ -1,0 +1,354 @@
+/* =========================================
+   PUBLIC/CSS/HERO.CSS - VERSIÓN GRID FINAL
+   ========================================= */
+
+:root {
+    --orange-btn: #F7A338;
+    --text-white: #ffffff;
+    --text-cream: #FFFACD;
+    --font-main: 'Poppins', sans-serif;
+    --font-title: 'Abril Fatface', cursive;
+}
+
+/* === 1. CONTENEDOR PRINCIPAL (FONDO) === */
+.hero-section {
+    /* Fondo del jardín */
+    background-image: url('../assets/img/fondo-jardin.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    /* Dimensiones */
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    /* Corta lo que sobre */
+    position: relative;
+
+    /* Usamos Flexbox para centrar nuestro Grid Layout verticalmente */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* === 2. EL GRID INVISIBLE (LA SOLUCIÓN AL SOLAPAMIENTO) === */
+/* Esto crea dos columnas: 50% Izquierda (Texto) | 50% Derecha (Espacio Buzón) */
+.hero-layout {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    /* 1 Fracción | 1 Fracción */
+    align-items: center;
+    /* Centrado vertical del contenido */
+    max-width: 1400px;
+    /* Límite para pantallas ultra anchas */
+    margin: 0 auto;
+}
+
+/* === 3. ÁREA DE TEXTO (COLUMNA IZQUIERDA) === */
+.hero-text-area {
+    /* Aquí vive el texto y el botón. No pueden salir de esta caja. */
+    padding-left: 10%;
+    /* Margen izquierdo estético */
+    padding-right: 20px;
+    /* Margen derecho de seguridad */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    z-index: 5;
+}
+
+/* --- HEADER FIJO Y DINÁMICO --- */
+.top-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 60px;
+
+    /* CAMBIO CLAVE: Fixed para que siempre esté visible */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+
+    z-index: 999;
+    /* Por encima de todo, incluso de los popups si quieres */
+    box-sizing: border-box;
+
+    /* Transición suave para cuando cambie de color */
+    transition: all 0.3s ease;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+/* CAMBIO 2: Icono de menú un poco más grande para compensar */
+.menu-icon {
+    width: 35px;
+    /* Antes 24px */
+    height: auto;
+    cursor: pointer;
+    transition: filter 0.3s;
+}
+
+/* CAMBIO 3: EL LOGO MUCHO MÁS GRANDE */
+.logo-img {
+    width: 100px;
+    /* Antes 60px - Ahora se verá mucho más importante */
+    height: auto;
+    border-radius: 50%;
+
+    /* Opcional: una sombra suave para que destaque sobre cualquier fondo */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* ESTADO POR DEFECTO (Light - Texto Blanco) */
+.team-name {
+    font-family: 'Courier New', monospace;
+    font-weight: bold;
+    letter-spacing: 2px;
+    color: var(--text-cream);
+    /* Color crema/blanco */
+    text-transform: uppercase;
+    transition: color 0.3s ease;
+}
+
+/* ESTADO OSCURO (Para fondos claros como el amarillo) */
+.top-header.header-dark .team-name {
+    color: #4a3b2a;
+    /* Marrón oscuro */
+    font-weight: 800;
+    /* Un poco más grueso para que se lea bien */
+}
+
+/* Invertir color del icono de menú (si es un PNG blanco) */
+.top-header.header-dark .menu-icon {
+    filter: invert(1) brightness(0.2);
+    /* Lo vuelve negro/oscuro */
+}
+
+/* --- TIPOGRAFÍA --- */
+.main-title {
+    font-family: var(--font-title);
+    font-weight: normal;
+    /* Clamp hace que la fuente crezca/decrezca fluidamente */
+    font-size: clamp(3rem, 5vw, 6rem);
+    line-height: 1.1;
+    margin-bottom: 0;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+    color: var(--text-white);
+    white-space: nowrap;
+    /* Evita que el título se parta en sitios feos */
+}
+
+.main-title .highlight-text {
+    display: block;
+    font-size: clamp(5rem, 10vw, 11rem);
+    line-height: 0.9;
+    margin-top: -10px;
+    /* word-wrap ya no es necesario con el Grid, pero lo dejamos por seguridad */
+    word-wrap: break-word;
+}
+
+/* --- BOTÓN ABRIR (CENTRADO ABSOLUTO) --- */
+.btn-abrir {
+    /* Estética Visual */
+    background-color: var(--orange-btn);
+    color: var(--text-white);
+    border: 3px solid var(--text-white);
+    padding: 15px 70px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-radius: 15px;
+    cursor: pointer;
+    font-family: var(--font-main);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+    transition: all 0.2s ease;
+    white-space: nowrap;
+
+    /* POSICIONAMIENTO MAGISTRAL */
+    position: absolute;
+    /* Flota sobre todo */
+    bottom: 10%;
+    /* 10% desde el suelo */
+    left: 50%;
+    /* Mitad de la pantalla */
+    transform: translateX(-50%);
+    /* Centrado matemático exacto */
+
+    z-index: 20;
+    /* Por encima del texto y del fondo */
+}
+
+.btn-abrir:hover {
+    transform: translateX(-50%) scale(1.05) translateY(-3px);
+    background-color: #ffb357;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+}
+
+/* --- ANIMACIONES Y OVERLAY --- */
+.fade-in-load {
+    animation: fadeIn 1.5s ease-out forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.message-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.85);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+}
+
+.message-overlay.visible {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.message-card {
+    background: #fffaf0;
+    color: #333;
+    padding: 50px;
+    border-radius: 25px;
+    max-width: 90%;
+    width: 600px;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    transform: scale(0.9);
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.message-overlay.visible .message-card {
+    transform: scale(1);
+}
+
+.message-text {
+    font-size: 1.4rem;
+    font-style: italic;
+    margin: 30px 0;
+    line-height: 1.6;
+}
+
+.close-btn {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-size: 2rem;
+    cursor: pointer;
+    color: #aaa;
+}
+
+.btn-link {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 30px;
+    background-color: var(--orange-btn);
+    color: white;
+    text-decoration: none;
+    border-radius: 30px;
+    font-weight: bold;
+}
+
+/* --- RESPONSIVE --- */
+/* --- RESPONSIVE (CORRECCIÓN PARA MÓVIL) --- */
+@media (max-width: 900px) {
+
+    /* 1. Ajuste de la Cuadrícula */
+    .hero-layout {
+        /* Una sola columna */
+        grid-template-columns: 1fr;
+
+        /* CAMBIO CLAVE: En lugar de 'auto 1fr', le damos el 55% de la altura al texto.
+           Esto obliga al área de texto a ser más alta, empujando el contenido hacia abajo. */
+        grid-template-rows: 55% 45%;
+    }
+
+    /* 2. Ajuste del Área de Texto */
+    .hero-text-area {
+        padding-left: 0;
+
+        /* Alineación */
+        align-items: center;
+        /* Centrado horizontal */
+        text-align: center;
+
+        /* CAMBIO CLAVE: Alineamos el texto al FINAL de su caja (abajo).
+           Como la caja ocupa el 55% de la pantalla, esto deja el texto
+           justo en el medio visual, separado del header. */
+        justify-content: flex-end;
+
+        padding-bottom: 20px;
+        /* Un poco de aire antes de que empiece la zona vacía */
+        padding-top: 50px;
+    }
+
+    /* 3. Ajustes de Fuente para Móvil */
+    .main-title {
+        font-size: 3rem;
+        white-space: normal;
+        /* Permitimos saltos de línea */
+        padding: 0 20px;
+        /* Margen lateral para que no toque los bordes */
+    }
+
+    .main-title .highlight-text {
+        font-size: 4.5rem;
+        /* Un poco más pequeño para que quepa bien */
+        margin-top: 5px;
+    }
+
+    /* 4. Posición del Botón en Móvil */
+    .btn-abrir {
+        /* Lo subimos un poco (15%) para que no pise el área del buzón */
+        bottom: 15%;
+    }
+
+    /* 5. Fondo */
+    .hero-section {
+        /* Aseguramos que el suelo del jardín se vea abajo */
+        background-position: center bottom;
+    }
+}
+
+/* --- RESPONSIVE DEL HEADER (IMPORTANTE) --- */
+/* En móvil no queremos que el logo sea GIGANTE porque ocuparía media pantalla */
+@media (max-width: 768px) {
+    .top-header {
+        padding: 15px 25px;
+        /* Reducimos padding en móvil */
+    }
+
+    .logo-img {
+        width: 70px;
+        /* Un tamaño intermedio para móvil (grande pero seguro) */
+    }
+
+    .menu-icon {
+        width: 28px;
+    }
+}

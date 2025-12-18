@@ -1,0 +1,238 @@
+/* =========================================
+   SECCIÓN 3: RECURSOS (TARJETAS)
+   ========================================= */
+
+.resources-section {
+    /* Fondo Atardecer/Nubes */
+    background-image: url('../assets/img/fondo-nubes.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    /* 2. ELIMINACIÓN DE SCROLLS INDESEADOS */
+    width: 100%;
+    /* Ocupa todo el ancho */
+    height: 100vh;
+    /* Ocupa toda la altura */
+    overflow: hidden;
+    /* CORTA cualquier cosa que intente salirse */
+    box-sizing: border-box;
+    /* Clave: hace que el padding no sume tamaño extra *
+
+    /* ALINEACIÓN MODIFICADA PARA SUBIR EL CONTENIDO */
+    display: flex;
+    flex-direction: column;
+
+    /* Antes era 'center', ahora 'flex-start' para que empiece arriba */
+    justify-content: flex-start;
+
+    align-items: center;
+    text-align: center;
+
+    /* PADDING CLAVE: 
+       180px arriba: Suficiente para librar el header grande y dejar un poco de aire.
+       Si lo quieres MÁS ARRIBA, baja este número (ej. 160px).
+       Si lo quieres MÁS ABAJO, súbelo (ej. 220px). */
+    padding: 300px 20px 50px;
+
+    position: relative;
+    height: 100vh;
+    /* Aseguramos que ocupe la pantalla completa */
+    overflow: hidden;
+    /* Evitamos scroll doble si algo se sale un poco */
+}
+
+/* --- TEXTO SUPERIOR --- */
+.resources-header {
+    margin-bottom: 3rem;
+    color: #ffffff;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    max-width: 800px;
+}
+
+.resources-header h2 {
+    font-family: var(--font-main);
+    /* Poppins */
+    font-weight: bold;
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.resources-header h3 {
+    font-family: var(--font-title);
+    /* Abril Fatface */
+    font-size: 2.5rem;
+    margin: 0;
+}
+
+/* --- CONTENEDOR DE TARJETAS (GRID) --- */
+.cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    /* Permite que bajen en pantallas pequeñas */
+    justify-content: center;
+    gap: 20px;
+    width: 100%;
+    max-width: 1400px;
+}
+
+/* --- DISEÑO DE CADA TARJETA --- */
+.resource-card {
+    /* Efecto Cristal / Borde Blanco */
+    background: rgba(255, 255, 255, 0.15);
+    /* Fondo semitransparente */
+    backdrop-filter: blur(5px);
+    /* Desenfoque opcional si el navegador lo soporta */
+    border: 2px solid rgba(255, 255, 255, 0.8);
+    border-radius: 20px;
+
+    /* Dimensiones */
+    width: 260px;
+    padding: 30px 20px;
+
+    /* Flex interno para ordenar elementos */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+
+    transition: all 0.3s ease;
+    /* Suavidad al pasar el ratón */
+    cursor: default;
+    color: #fff;
+}
+
+/* EFECTO HOVER (Crecimiento) */
+.resource-card:hover {
+    transform: translateY(-10px) scale(1.05);
+    /* Sube y crece */
+    background: rgba(255, 255, 255, 0.25);
+    /* Se ilumina un poco más */
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* Título de la tarjeta (Pixel look) */
+.card-title {
+    font-family: 'Courier New', monospace;
+    /* Monospace da el toque pixel/retro */
+    font-weight: bold;
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    color: #333;
+    /* Color oscuro como en la foto, o blanco si prefieres */
+}
+
+/* Imagen de la tarjeta */
+.card-img {
+    height: 120px;
+    /* Altura fija para alinearlas bien */
+    width: auto;
+    object-fit: contain;
+    margin-bottom: 20px;
+    filter: drop-shadow(0 5px 5px rgba(0, 0, 0, 0.2));
+}
+
+/* Texto descriptivo */
+.card-desc {
+    font-family: var(--font-main);
+    font-size: 0.9rem;
+    line-height: 1.4;
+    color: #4a3b2a;
+    /* Marrón oscuro para lectura, o #fff según contraste */
+    font-weight: 500;
+}
+
+
+/* --- RESPONSIVE --- */
+@media (max-width: 1024px) {
+    .cards-container {
+        max-width: 800px;
+        /* Forzamos a que sean 2 filas de 2 */
+    }
+}
+
+/* --- RESPONSIVE: MÓVIL SUPER COMPACTO (2x2) --- */
+@media (max-width: 600px) {
+
+    .resources-section {
+        padding-top: 120px;
+        /* Espacio justo para el header */
+        padding-bottom: 30px;
+        overflow-y: auto;
+        justify-content: flex-start;
+    }
+
+    .resources-header h2 {
+        font-size: 1rem;
+        margin-bottom: 0.2rem;
+    }
+
+    .resources-header h3 {
+        font-size: 1.8rem;
+    }
+
+    /* CONTENEDOR FLEX PARA 2 COLUMNAS */
+    .cards-container {
+        display: flex;
+        flex-wrap: wrap;
+        /* Fundamental para que bajen a la siguiente línea */
+        justify-content: center;
+        gap: 10px;
+        /* Hueco pequeño entre tarjetas */
+        padding: 0 10px;
+        /* Margen lateral mínimo */
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    /* TARJETA MINIATURA */
+    .resource-card {
+        /* MATEMÁTICA PARA 2 COLUMNAS:
+           50% del ancho disponible MENOS la mitad del hueco (5px).
+           Esto garantiza que entren 2 exactas. */
+        width: calc(50% - 5px);
+        max-width: none;
+
+        /* Reducimos el tamaño vertical y el relleno */
+        min-height: 100px;
+        /* Altura muy compacta */
+        padding: 15px 5px;
+        /* Relleno interno mínimo */
+
+        border-radius: 15px;
+        /* Bordes un poco menos redondeados para ahorrar espacio */
+        flex-direction: column;
+        /* Vertical: Icono arriba, texto abajo */
+        justify-content: center;
+    }
+
+    /* OCULTAR DESCRIPCIÓN */
+    .card-desc {
+        display: none;
+    }
+
+    /* ICONO PEQUEÑO */
+    .card-img {
+        height: 40px;
+        /* Icono mucho más pequeño (antes 60px) */
+        width: auto;
+        margin-bottom: 8px;
+        margin-right: 0;
+        order: -1;
+        /* Forzamos que el icono vaya arriba del título */
+    }
+
+    /* TÍTULO PEQUEÑO */
+    .card-title {
+        font-size: 0.75rem;
+        /* Texto pequeño pero legible (aprox 12px) */
+        margin: 0;
+        line-height: 1.1;
+        word-break: break-word;
+        /* Evita que palabras largas rompan el diseño */
+    }
+}

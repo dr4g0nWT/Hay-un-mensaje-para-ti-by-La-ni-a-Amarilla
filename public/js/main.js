@@ -25,3 +25,43 @@ function cerrarMensaje() {
         }, 400);
     }
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+
+    /* --- CÓDIGO EXISTENTE DEL BOTÓN ABRIR --- */
+    // ... (Tu código del botón abrir y cerrar overlay sigue aquí igual) ...
+
+
+    /* --- NUEVO: CAMBIO DE COLOR DEL HEADER AL SCROLEAR --- */
+    const header = document.getElementById('mainHeader');
+    const sections = document.querySelectorAll('.snap-section');
+
+    // Configuración del observador
+    const observerOptions = {
+        root: null, // viewport
+        threshold: 0.5 // Se activa cuando el 50% de la sección es visible
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                // Leemos el atributo data-header-theme de la sección actual
+                const theme = entry.target.getAttribute('data-header-theme');
+
+                if (theme === 'dark') {
+                    // Si el fondo es claro, ponemos header oscuro
+                    header.classList.add('header-dark');
+                } else {
+                    // Si el fondo es oscuro, quitamos la clase (vuelve a blanco)
+                    header.classList.remove('header-dark');
+                }
+            }
+        });
+    }, observerOptions);
+
+    // Activamos el observador en todas las secciones
+    sections.forEach(section => {
+        observer.observe(section);
+    });
+
+});
