@@ -65,3 +65,20 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 });
+
+/* --- MENÚ DESPLEGABLE --- */
+function toggleMenu() {
+    const menu = document.getElementById('dropdownMenu');
+    menu.classList.toggle('active');
+}
+
+// Cerrar el menú si hacemos click fuera de él
+document.addEventListener('click', (event) => {
+    const menu = document.getElementById('dropdownMenu');
+    const icon = document.getElementById('menuIcon');
+
+    // Si el click NO fue en el menú NI en el icono, y el menú está abierto -> ciérralo
+    if (!menu.contains(event.target) && !icon.contains(event.target) && menu.classList.contains('active')) {
+        menu.classList.remove('active');
+    }
+});

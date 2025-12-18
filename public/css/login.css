@@ -1,0 +1,144 @@
+:root {
+    --bg-yellow: #ffeeb0;
+    /* El mismo amarillo del Scroll 2 */
+    --orange-btn: #F7A338;
+    --text-brown: #4a3b2a;
+    --font-main: 'Poppins', sans-serif;
+    --font-title: 'Abril Fatface', cursive;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-main);
+    background-color: var(--bg-yellow);
+    /* Fondo amarillo */
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--text-brown);
+}
+
+.login-container {
+    width: 100%;
+    max-width: 450px;
+    padding: 20px;
+    position: relative;
+}
+
+.back-link {
+    position: absolute;
+    top: -40px;
+    left: 20px;
+    text-decoration: none;
+    color: var(--text-brown);
+    font-weight: bold;
+    font-size: 0.9rem;
+    transition: color 0.3s;
+}
+
+.back-link:hover {
+    color: var(--orange-btn);
+}
+
+.login-card {
+    background: #ffffff;
+    padding: 40px 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(74, 59, 42, 0.1);
+    /* Sombra suave marrón */
+    text-align: center;
+}
+
+.login-logo {
+    width: 120px;
+    /* Logo grande */
+    height: auto;
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-family: var(--font-title);
+    font-size: 2rem;
+    margin-bottom: 10px;
+    color: var(--orange-btn);
+}
+
+.subtitle {
+    font-size: 1rem;
+    margin-bottom: 30px;
+    color: #666;
+}
+
+/* Formulario */
+.input-group {
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+input {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #eee;
+    border-radius: 10px;
+    font-family: var(--font-main);
+    font-size: 1rem;
+    box-sizing: border-box;
+    /* Importante para que no se salga */
+    transition: border-color 0.3s;
+}
+
+input:focus {
+    border-color: var(--orange-btn);
+    outline: none;
+}
+
+.btn-login {
+    width: 100%;
+    padding: 15px;
+    background-color: var(--orange-btn);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+    margin-top: 10px;
+}
+
+.btn-login:hover {
+    background-color: #e5942f;
+    transform: translateY(-2px);
+}
+
+.login-footer {
+    margin-top: 25px;
+    font-size: 0.9rem;
+}
+
+.login-footer a {
+    color: var(--orange-btn);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.small-text {
+    font-size: 0.8rem;
+    color: #999;
+    margin-top: 10px;
+}
+
+/* Estilo para botón deshabilitado */
+button:disabled {
+    background-color: #ccc !important;
+    transform: none !important;
+}

@@ -1,25 +1,31 @@
 const express = require('express');
 const path = require('path');
+const bodyParser = require('body-parser');
+
+// Inicializar App
 const app = express();
 
-// Definir el puerto (toma el del entorno o usa el 3000 por defecto)
-const PORT = process.env.PORT || 3000;
+// 1. Configuración del Motor de Plantillas
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
 
-// Middleware para servir archivos estáticos (CSS, JS, Img)
-// Esto le dice a Express que busque en la carpeta 'public'
+// 2. Archivos Estáticos
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Ruta principal: Cuando alguien entre a la web, enviamos el index.html
-app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'html/index.html'));
-});
+// 3. Middlewares
+// Parsear datos de formularios (req.body)
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.json()); // Recomendado añadir también para JSON
 
-// (Opcional) Ruta de prueba para el futuro Back-End
-app.get('/api/estado', (req, res) => {
-    res.json({ mensaje: 'Servidor funcionando correctamente', estado: 'OK' });
-});
+// 4. Rutas (Importamos los archivos de rutas)
+// Usamos '/' para las páginas normales
+app.use('/', require('./routes/pages'));
 
-// Arrancar el servidor
+// Usamos '/' también para auth (o podrías usar '/auth' si quisieras /auth/login)
+app.use('/', require('./routes/auth'));
+
+// 5. Iniciar Servidor
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-    console.log(`✅ Servidor corriendo en http://localhost:${PORT}`);
+    console.log(`Servidor corriendo en http://localhost:${PORT}`);
 });
