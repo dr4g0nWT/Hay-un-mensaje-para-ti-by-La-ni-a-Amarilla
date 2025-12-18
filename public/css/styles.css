@@ -1,0 +1,287 @@
+/* --- VARIABLES Y FUENTES --- */
+:root {
+    --orange-btn: #F7A338;
+    --text-white: #ffffff;
+    --text-cream: #FFFACD;
+    --font-main: 'Poppins', sans-serif;
+    --font-title: 'Abril Fatface', cursive;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-main);
+    /* === AQUÍ ESTÁ LA CLAVE === */
+    background-image: url('../assets/img/fondo-jardin.jpg');
+    background-size: cover;
+    /* Cubre toda la pantalla sin deformarse */
+    background-position: center;
+    /* Centra la imagen */
+    background-repeat: no-repeat;
+    height: 100vh;
+    /* Altura completa de la ventana */
+    overflow: hidden;
+    /* Evita scroll */
+    color: var(--text-white);
+}
+
+/* --- CABECERA SUPERIOR (HEADER) --- */
+.top-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    /* Un poco más de padding lateral */
+    position: absolute;
+    /* Lo fijamos arriba */
+    width: 100%;
+    top: 0;
+    z-index: 10;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.menu-icon {
+    width: 24px;
+    height: auto;
+    cursor: pointer;
+}
+
+.team-name {
+    font-family: 'Courier New', monospace;
+    font-weight: bold;
+    letter-spacing: 2px;
+    color: var(--text-cream);
+    text-transform: uppercase;
+}
+
+.logo-img {
+    width: 60px;
+    height: auto;
+    border-radius: 50%;
+}
+
+/* --- SECCIÓN PRINCIPAL (HERO) --- */
+.hero-section {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    /* Alineado a la izquierda siempre */
+
+    /* ZONA DE SEGURIDAD: 
+       Dejamos un margen del 5% a la izquierda.
+       Y lo más importante: el ancho del contenido NUNCA pasará del 55% de la pantalla.
+       Así protegemos al buzón que está a la derecha. */
+    padding-left: 30vw;
+    width: 100%;
+    max-width: 60vw;
+    /* El texto nunca cruzará más allá del 60% de la pantalla */
+
+    text-align: left;
+    position: relative;
+}
+
+.main-title {
+    font-family: var(--font-title);
+    font-weight: normal;
+
+    /* Ajustamos el clamp para que sea más reactivo en pantallas pequeñas */
+    /* Mínimo 2rem, Ideal 5% del ancho, Máximo 5rem */
+    font-size: clamp(2.5rem, 5vw, 5rem);
+
+    line-height: 1.1;
+    margin-bottom: 0;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+    display: block;
+    /* Importante: block para que respete el ancho del padre */
+}
+
+/* La parte grande "para ti" */
+.main-title .highlight-text {
+    display: block;
+
+    /* Reducimos un poco el multiplicador (de 13vw a 11vw) para que no sea tan agresivo */
+    font-size: clamp(4.5rem, 11vw, 12rem);
+
+    line-height: 0.9;
+    margin-top: -10px;
+
+    /* Aseguramos que no se desborde si la pantalla es muy estrecha */
+    max-width: 100%;
+    word-wrap: break-word;
+}
+
+/* --- AJUSTES ESPECÍFICOS PARA MÓVIL Y TABLET --- */
+/* Cuando la pantalla sea menor a 1024px (Laptops pequeñas / Tablets) */
+@media (max-width: 1024px) {
+    .hero-section {
+        padding-left: 10vw;
+        /* Reducimos el margen izquierdo */
+    }
+}
+
+/* Cuando la pantalla sea menor a 768px (Móviles) */
+@media (max-width: 768px) {
+    .hero-section {
+        /* En móvil, a veces queda mejor centrado porque el fondo suele recortarse.
+           Si prefieres mantenerlo a la izquierda, borra 'align-items' y 'text-align' de aquí */
+        padding-left: 0;
+        align-items: center;
+        text-align: center;
+    }
+
+    .main-title {
+        /* Forzamos tamaños legibles en móvil vertical */
+        font-size: 3rem;
+    }
+
+    .main-title .highlight-text {
+        font-size: 7rem;
+        margin-top: -5px;
+    }
+
+    /* Ajustamos el botón para que no tape el texto en pantallas pequeñas */
+    .btn-abrir {
+        bottom: 15%;
+        /* Lo subimos un poco más */
+    }
+}
+
+/* --- BOTÓN ABRIR (MODIFICADO) --- */
+.btn-abrir {
+    /* Estética (Colores y formas) */
+    background-color: var(--orange-btn);
+    color: var(--text-white);
+    border: 3px solid var(--text-white);
+    padding: 15px 70px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-radius: 15px;
+    cursor: pointer;
+    font-family: var(--font-main);
+    letter-spacing: 3px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+    transition: all 0.2s ease;
+    text-transform: uppercase;
+
+    /* POSICIONAMIENTO (Lo nuevo) */
+    position: absolute;
+    /* Lo desvincula del texto */
+    bottom: 80px;
+    /* Distancia desde el suelo (ajústalo si pisa mucho el camino) */
+    left: 80%;
+    /* Lo mandamos a la mitad de la pantalla */
+    transform: translateX(-50%);
+    /* Corrección matemática para centrarlo perfecto */
+    z-index: 5;
+    /* Asegura que esté por encima del fondo */
+}
+
+.btn-abrir:hover {
+    transform: translateX(-50%) scale(1.05) translateY(-3px);
+    /* Mantenemos el centrado al hacer hover */
+    background-color: #ffb357;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+}
+
+/* --- ANIMACIONES --- */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.fade-in-load {
+    animation: fadeIn 1.5s ease-out forwards;
+}
+
+/* --- ESTILOS PARA EL MENSAJE OCULTO --- */
+.message-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.85);
+    /* Fondo más oscuro */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+}
+
+.message-overlay.visible {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.message-card {
+    background: #fffaf0;
+    /* Un blanco roto más cálido */
+    color: #333;
+    padding: 50px;
+    border-radius: 25px;
+    max-width: 600px;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    transform: scale(0.9);
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    /* Efecto rebote */
+}
+
+.message-overlay.visible .message-card {
+    transform: scale(1);
+}
+
+.message-text {
+    font-size: 1.4rem;
+    font-style: italic;
+    margin: 30px 0;
+    line-height: 1.6;
+}
+
+.close-btn {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-size: 2rem;
+    cursor: pointer;
+    color: #aaa;
+}
+
+.close-btn:hover {
+    color: var(--orange-btn);
+}
+
+.btn-link {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 30px;
+    background-color: var(--orange-btn);
+    color: white;
+    text-decoration: none;
+    border-radius: 30px;
+    font-weight: bold;
+}
+
+.hidden {
+    display: none;
+}

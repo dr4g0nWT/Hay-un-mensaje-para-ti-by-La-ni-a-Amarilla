@@ -1,0 +1,270 @@
+:root {
+    --orange-btn: #F7A338;
+    --text-white: #ffffff;
+    --text-cream: #FFFACD;
+    --font-main: 'Poppins', sans-serif;
+    --font-title: 'Abril Fatface', cursive;
+}
+
+/* === CORRECCIÓN PRINCIPAL === */
+.hero-section {
+    /* 1. Fondo aplicado aquí */
+    background-image: url('../assets/img/fondo-jardin.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    /* 2. Dimensiones correctas */
+    width: 100%;
+    /* Usamos % en vez de vw para respetar la barra de scroll */
+    height: 100vh;
+    overflow: hidden;
+    /* CORTA cualquier elemento que intente salirse */
+    position: relative;
+
+    /* 3. Alineación del texto (Flexbox en lugar de paddings gigantes) */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* Centrado vertical */
+
+    /* Esto replica tu "padding-left: 30vw" pero de forma segura */
+    padding-left: 30vw;
+    box-sizing: border-box;
+    /* Asegura que el padding no sume al ancho total */
+}
+
+/* --- HEADER --- */
+.top-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    box-sizing: border-box;
+    /* Importante para que no se salga */
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.menu-icon {
+    width: 24px;
+    height: auto;
+    cursor: pointer;
+}
+
+.team-name {
+    font-family: 'Courier New', monospace;
+    font-weight: bold;
+    letter-spacing: 2px;
+    color: var(--text-cream);
+    text-transform: uppercase;
+}
+
+.logo-img {
+    width: 60px;
+    height: auto;
+    border-radius: 50%;
+}
+
+/* --- CONTENIDO DEL TEXTO --- */
+/* Envolvemos el título para controlarlo mejor */
+.hero-content {
+    /* Limitamos el ancho SOLO del texto, no del fondo */
+    max-width: 800px;
+    position: relative;
+    z-index: 2;
+    text-align: left;
+}
+
+.main-title {
+    font-family: var(--font-title);
+    font-weight: normal;
+    font-size: clamp(2.5rem, 5vw, 5rem);
+    line-height: 1.1;
+    margin-bottom: 0;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+    color: var(--text-white);
+}
+
+.main-title .highlight-text {
+    display: block;
+    font-size: clamp(4.5rem, 11vw, 12rem);
+    line-height: 0.9;
+    margin-top: -10px;
+    word-wrap: break-word;
+}
+
+/* --- BOTÓN ABRIR (CORREGIDO: ABAJO CENTRADO) --- */
+.btn-abrir {
+    /* Estética Visual (Igual que antes) */
+    background-color: var(--orange-btn);
+    color: var(--text-white);
+    border: 3px solid var(--text-white);
+    padding: 15px 70px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-radius: 15px;
+    cursor: pointer;
+    font-family: var(--font-main);
+    letter-spacing: 3px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+    transition: all 0.2s ease;
+    text-transform: uppercase;
+    white-space: nowrap;
+
+    /* POSICIONAMIENTO NUEVO */
+    position: absolute;
+
+    /* 1. Lo pegamos abajo (10% de altura desde el suelo) */
+    bottom: 10%;
+
+    /* 2. Lo ponemos al centro horizontal exacto */
+    left: 50%;
+
+    /* 3. Corregimos su propio ancho para que sea el centro matemático */
+    transform: translateX(-50%);
+
+    z-index: 5;
+}
+
+/* Efecto Hover */
+.btn-abrir:hover {
+    /* Mantenemos la corrección de posición (-50%) y añadimos la escala */
+    transform: translateX(-50%) scale(1.05) translateY(-3px);
+    background-color: #ffb357;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+}
+
+/* --- ANIMACIONES Y OVERLAY --- */
+.fade-in-load {
+    animation: fadeIn 1.5s ease-out forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.message-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.85);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+}
+
+.message-overlay.visible {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.message-card {
+    background: #fffaf0;
+    color: #333;
+    padding: 50px;
+    border-radius: 25px;
+    max-width: 90%;
+    width: 600px;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    transform: scale(0.9);
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.message-overlay.visible .message-card {
+    transform: scale(1);
+}
+
+.message-text {
+    font-size: 1.4rem;
+    font-style: italic;
+    margin: 30px 0;
+    line-height: 1.6;
+}
+
+.close-btn {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-size: 2rem;
+    cursor: pointer;
+    color: #aaa;
+}
+
+.btn-link {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 30px;
+    background-color: var(--orange-btn);
+    color: white;
+    text-decoration: none;
+    border-radius: 30px;
+    font-weight: bold;
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 1024px) {
+    .hero-section {
+        padding-left: 10vw;
+    }
+
+    .btn-abrir {
+        left: 50%;
+        bottom: 10%;
+    }
+
+    /* Centrar botón en tablet */
+}
+
+@media (max-width: 768px) {
+    .hero-section {
+        padding-left: 0;
+        align-items: center;
+        text-align: center;
+    }
+
+    .main-title {
+        font-size: 3rem;
+    }
+
+    .main-title .highlight-text {
+        font-size: 5rem;
+        margin-top: 0;
+    }
+
+    .btn-abrir {
+        /* En móvil podemos subirlo un poquito si el teclado o la barra del navegador molestan */
+        bottom: 15%;
+        /* Aseguramos que se mantenga centrado */
+        left: 50%;
+        transform: translateX(-50%);
+        margin-top: 0;
+    }
+
+    .btn-abrir:hover {
+        transform: scale(1.05);
+    }
+}

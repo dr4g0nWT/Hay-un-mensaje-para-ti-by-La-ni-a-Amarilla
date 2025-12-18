@@ -1,0 +1,29 @@
+html,
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    /* AÑADE ESTO SI NO ESTABA: */
+    overflow-x: hidden;
+    width: 100%;
+}
+
+/* El contenedor maestro */
+.scroll-container {
+    height: 100vh;
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
+    /* El efecto imán */
+    scroll-behavior: smooth;
+}
+
+/* Cada pantalla individual */
+.snap-section {
+    height: 100vh;
+    width: 100%;
+    scroll-snap-align: start;
+    /* Se ancla al inicio */
+    position: relative;
+    overflow: hidden;
+    /* Protege que nada se salga de su pantalla */
+}
