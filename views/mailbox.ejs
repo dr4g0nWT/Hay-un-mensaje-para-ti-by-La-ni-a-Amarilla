@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <%- include('partials/head') %>
+        <title>Mi Buzón | La Niña Amarilla</title>
+        <link rel="stylesheet" href="../css/mailbox.css">
+</head>
+
+<body>
+
+    <%- include('partials/header') %>
+
+        <section class="mailbox-hero">
+            <div class="health-bar-container">
+                <img src="/img/pixel-heart.png" alt="Vida" class="pixel-heart">
+                <div class="health-bar">
+                    <div class="health-fill" style="width: 70%;"></div>
+                </div>
+            </div>
+
+            <img src="../assets/img/buzon-pixel-art.png" alt="Buzón" class="central-mailbox-img">
+        </section>
+
+        <h1 class="mailbox-title">Te ha llegado una notificación</h1>
+
+        <nav class="mailbox-nav">
+
+            <button class="nav-btn active" onclick="openTab('destacados')">Mensajes Destacados</button>
+            <button class="nav-btn" onclick="openTab('entrada')">Bandeja de Entrada</button>
+            <button class="nav-btn" onclick="openTab('borradores')">Borradores</button>
+        </nav>
+
+        <main class="mailbox-container">
+
+            <div class="filter-bar">
+                <input type="text" id="searchInput" class="search-input" placeholder="🔍 Filtrar por asunto, usuario..."
+                    onkeyup="filterTable()">
+            </div>
+
+            <div id="destacados" class="tab-content active">
+                <h2 style="color: #F7A338;">⭐ Tus favoritos</h2>
+                <div class="table-responsive">
+                    <table class="mail-table" id="tableDestacados">
+                        <thead>
+                            <tr>
+                                <th>De</th>
+                                <th>Asunto</th>
+                                <th>Fecha</th>
+                                <th>Acción</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Admin</strong></td>
+                                <td>Bienvenid@ al jardín</td>
+                                <td>18/12/2023</td>
+                                <td><a href="#">Leer</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div id="entrada" class="tab-content">
+                <h2 style="color: #F7A338;">📥 Todos los mensajes</h2>
+                <div class="table-responsive">
+                    <table class="mail-table" id="tableEntrada">
+                        <thead>
+                            <tr>
+                                <th>De</th>
+                                <th>Asunto</th>
+                                <th>Mensaje (Previo)</th>
+                                <th>Fecha</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Usuario123</td>
+                                <td>Gracias por el apoyo</td>
+                                <td>Me sentí muy identificado con...</td>
+                                <td>17/12/2023</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div id="borradores" class="tab-content">
+                <h2 style="color: #F7A338;">📝 Mensajes sin enviar</h2>
+                <div class="table-responsive">
+                    <table class="mail-table">
+                        <thead>
+                            <tr>
+                                <th>Para</th>
+                                <th>Asunto</th>
+                                <th>Guardado</th>
+                                <th>Acción</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>(Sin destinatario)</td>
+                                <td>Mi historia personal...</td>
+                                <td>Hace 2 horas</td>
+                                <td><a href="#">Editar</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </main>
+
+        <script src="../js/mailbox.js"></script>
+
+        <script src="../js/main.js"></script>
+</body>
+
+</html>

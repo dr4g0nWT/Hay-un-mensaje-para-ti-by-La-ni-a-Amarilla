@@ -10,10 +10,22 @@
     </div>
     <nav id="dropdownMenu" class="dropdown-menu">
         <ul>
-            <li><a href="/login" class="menu-link">Iniciar Sesión</a></li>
-            <li><a href="/register" class="menu-link">Registrarse</a></li>
-            <li><a href="https://laninaamarilla.com" target="_blank" class="menu-link">Recursos de Ayuda</a></li>
-            <li><a href="#contacto" class="menu-link">Contacto</a></li>
+            <% if (user) { %>
+                <li><a href="/buzon" class="menu-link">Mi Buzón</a></li>
+
+                <li><a href="/logout" class="menu-link" style="color: #e74c3c;">Cerrar Sesión</a></li>
+
+                <hr style="border: 0; border-top: 1px solid rgba(0,0,0,0.1); margin: 10px 0;">
+                <% } else { %>
+                    <li><a href="/login" class="menu-link">Iniciar Sesión</a></li>
+                    <li><a href="/register" class="menu-link">Crear Cuenta</a></li>
+
+                    <hr style="border: 0; border-top: 1px solid rgba(0,0,0,0.1); margin: 10px 0;">
+                    <% } %>
+
+                        <li><a href="https://laninaamarilla.com" target="_blank" class="menu-link">Recursos de Ayuda</a>
+                        </li>
+                        <li><a href="#contacto" class="menu-link">Contacto</a></li>
         </ul>
     </nav>
 </header>
