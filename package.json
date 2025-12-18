@@ -1,0 +1,15 @@
+{
+  "name": "la-nina-amarilla-web",
+  "version": "1.0.0",
+  "description": "Microsite para la ONG La Niña Amarilla",
+  "main": "index.js",
+  "scripts": {
+    "start": "lite-server"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "lite-server": "^2.6.1"
+  }
+}

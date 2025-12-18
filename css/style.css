@@ -1,0 +1,154 @@
+/* --- VARIABLES Y ESTILO GENERAL --- */
+:root {
+    --primary-yellow: #FFD54F;
+    /* Amarillo cálido tipo Canva */
+    --text-dark: #333333;
+    --white: #ffffff;
+    --accent: #FF6F61;
+    /* Un tono coral para resaltar */
+    --font-main: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-main);
+    background-color: var(--primary-yellow);
+    color: var(--text-dark);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* --- CONTENEDOR PRINCIPAL --- */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+/* --- TARJETA TIPO "SOBRE" --- */
+.card {
+    background: var(--white);
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 600px;
+    transition: transform 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: var(--text-dark);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    color: var(--text-dark);
+}
+
+p.subtitle {
+    font-size: 1.2rem;
+    color: #666;
+    margin-bottom: 30px;
+}
+
+/* --- BOTÓN INTERACTIVO --- */
+.btn-open {
+    background-color: var(--text-dark);
+    color: var(--white);
+    border: none;
+    padding: 15px 30px;
+    font-size: 1rem;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: bold;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.btn-open:hover {
+    transform: translateY(-2px);
+    background-color: #000;
+}
+
+/* --- EL MENSAJE OCULTO (ANIMACIÓN) --- */
+.hidden-content {
+    display: none;
+    /* Oculto inicialmente */
+    margin-top: 30px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    border-top: 2px dashed var(--primary-yellow);
+    padding-top: 20px;
+}
+
+.hidden-content.visible {
+    display: block;
+    /* Usamos JS para activar la animación de opacidad */
+}
+
+.message-text {
+    font-size: 1.3rem;
+    font-style: italic;
+    margin-bottom: 20px;
+    color: var(--accent);
+}
+
+/* --- SECCIÓN FUTURA DEL JUEGO --- */
+.game-placeholder {
+    margin-top: 40px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 10px;
+    border: 2px solid var(--text-dark);
+    display: none;
+    /* Oculto hasta que se active el mensaje */
+}
+
+/* --- FOOTER --- */
+footer {
+    margin-top: 50px;
+    font-size: 0.8rem;
+    opacity: 0.8;
+}
+
+a {
+    color: var(--text-dark);
+    text-decoration: underline;
+}
+
+/* Animación suave de entrada */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in-load {
+    animation: fadeIn 1s ease-out forwards;
+}
