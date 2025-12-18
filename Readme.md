@@ -61,3 +61,45 @@ El proyecto sigue el patrón de arquitectura **Modelo-Vista-Controlador (MVC)** 
 │
 └── config/              # Configuraciones extra
     └── db.js            # (Futura conexión a BD)
+```
+
+## 🤝 Contribución
+
+¡Las contribuciones son lo que hacen a la comunidad de código abierto un lugar increíble para aprender, inspirar y crear! Cualquier contribución que hagas al **Equipo 5** será **muy apreciada**.
+
+Si tienes una idea para mejorar la plataforma o has encontrado un error, sigue estos pasos para colaborar:
+
+### 📝 Flujo de Trabajo
+
+1.  **Haz un Fork** del proyecto (botón arriba a la derecha en GitHub).
+2.  **Clona tu Fork** a tu máquina local:
+    ```bash
+    git clone [https://github.com/TU_USUARIO/la-nina-amarilla.git](https://github.com/TU_USUARIO/la-nina-amarilla.git)
+    ```
+3.  **Crea una nueva Rama (Branch)** para tu funcionalidad o corrección:
+    ```bash
+    git checkout -b feature/NuevaFuncionalidad
+    ```
+4.  **Realiza tus cambios** en el código.
+    * *Nota:* Asegúrate de seguir la estructura **MVC** (vistas en `/views`, lógica en `/controllers`, rutas en `/routes`).
+5.  **Haz Commit** de tus cambios con un mensaje descriptivo:
+    ```bash
+    git commit -m 'Añadir: Nueva sección de contacto en el footer'
+    ```
+6.  **Haz Push** a la rama:
+    ```bash
+    git push origin feature/NuevaFuncionalidad
+    ```
+7.  **Abre un Pull Request** en GitHub desde tu rama hacia la rama `main` de este repositorio.
+
+### ⚠️ Normas de Desarrollo
+
+* **Código Limpio:** Intenta mantener el código legible y comentado donde sea necesario.
+* **Commits Semánticos:** Usa mensajes claros (ej: `fix: error en login`, `feat: nueva tarjeta de recursos`, `style: corrección css móvil`).
+* **Issues:** Si vas a realizar un cambio grande, por favor abre primero un **Issue** para discutir lo que te gustaría cambiar.
+
+---
+
+## ✒️ Autores
+* Equipo 5 - Desarrollo y Diseño
+* dr4g0nWT - Desarrollo
