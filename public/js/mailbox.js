@@ -62,6 +62,14 @@ document.addEventListener('DOMContentLoaded', () => {
         // No, el common modal suele ser modal-force. Dejo asi.
     }
 
+    // Botón descartar
+    const discardBtn = document.getElementById('discardBtn');
+    if (discardBtn) {
+        discardBtn.onclick = function () {
+            discardDraft();
+        }
+    }
+
     // Submit
     if (form) {
         form.onsubmit = function (e) {
@@ -70,6 +78,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 });
+
+let isDiscarding = false; // Flag to prevent auto-save
 
 // --- FUNCIONES ACCIONES MENSAJES ---
 
@@ -84,8 +94,12 @@ function openMessage(msg, mode) {
     const messageDate = document.getElementById('messageDate');
     const modalTitle = document.getElementById('modalTitle');
     const sendBtn = document.getElementById('sendBtn');
+    const discardBtn = document.getElementById('discardBtn');
     const draftStatus = document.getElementById('draftStatus');
     const messageId = document.getElementById('messageId');
+
+    // Reset flag
+    isDiscarding = false;
 
     // Rellenamos datos
     messageId.value = msg.id;
@@ -107,8 +121,9 @@ function openMessage(msg, mode) {
         dateGroup.style.display = 'block';
         messageDate.value = new Date(msg.created_at).toLocaleString();
 
-        // Ocultar botón enviar
+        // Ocultar botones acción
         sendBtn.style.display = 'none';
+        if (discardBtn) discardBtn.style.display = 'none';
         draftStatus.innerText = "";
     }
     // Si es modo edición (borrador)
@@ -125,10 +140,12 @@ function openMessage(msg, mode) {
         // Ocultar fecha
         dateGroup.style.display = 'none';
 
-        // Mostrar botón
+        // Mostrar botones
         sendBtn.style.display = 'block';
         sendBtn.innerText = "Enviar ✉️";
-        draftStatus.innerText = "Guardado anteriormente en borrador";
+        if (discardBtn) discardBtn.style.display = 'block';
+
+        draftStatus.innerText = "Guardando cambios en borrador...";
     }
 
     modal.style.display = "flex";
@@ -142,8 +159,11 @@ function resetModalForNewMessage() {
     const contentInput = document.getElementById('messageContent');
     const dateGroup = document.getElementById('dateGroup');
     const sendBtn = document.getElementById('sendBtn');
+    const discardBtn = document.getElementById('discardBtn');
     const draftStatus = document.getElementById('draftStatus');
     const messageId = document.getElementById('messageId');
+
+    isDiscarding = false; // Reset flag
 
     form.reset();
     messageId.value = ''; // Reset ID = Nuevo mensaje
@@ -156,12 +176,58 @@ function resetModalForNewMessage() {
 
     dateGroup.style.display = 'none';
     sendBtn.style.display = 'block';
+    if (discardBtn) discardBtn.style.display = 'block'; // Mostrar descartar en nuevo
     sendBtn.innerText = "Enviar ✉️";
     draftStatus.innerText = "";
 }
 
+// 7. DESCARTAR (Nuevo: Limpiar / Edición: Borrar)
+function discardDraft() {
+    const id = document.getElementById('messageId').value;
+
+    // Si ya existe (tiene ID), borrar de BD
+    if (id) {
+        CommonModal.show('warning', '¿Descartar Borrador?', 'Esto eliminará el borrador permanentemente.', () => {
+            isDiscarding = true; // Activar flag para saltar auto-save
+
+            fetch('/messages/delete', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ id })
+            })
+                .then(r => r.json())
+                .then(data => {
+                    if (data.success) {
+                        document.getElementById('composeModal').style.display = 'none';
+                        location.reload();
+                    } else {
+                        CommonModal.show('error', 'Error', 'No se pudo descartar el borrador');
+                        isDiscarding = false;
+                    }
+                })
+        }, true);
+    } else {
+        // Si es nuevo (no ID), simplemente cerrar sin guardar
+        // Confirmar si hay texto escrito?
+        const hasContent = document.getElementById('recipient').value || document.getElementById('messageContent').value;
+
+        if (hasContent) {
+            CommonModal.show('warning', '¿Descartar Mensaje?', 'Se perderá lo que has escrito.', () => {
+                isDiscarding = true;
+                document.getElementById('composeForm').reset();
+                document.getElementById('composeModal').style.display = 'none';
+            }, true);
+        } else {
+            isDiscarding = true;
+            document.getElementById('composeModal').style.display = 'none';
+        }
+    }
+}
+
 // 2. CERRAR Y GUARDAR BORRADOR (Solo si es nuevo o estaba editando borrador)
 function closeAndSaveDraft() {
+    if (isDiscarding) return;
+
     const modal = document.getElementById('composeModal');
     // Si el botón enviar está oculto, es modo lectura. No guardar nada.
     const sendBtn = document.getElementById('sendBtn');

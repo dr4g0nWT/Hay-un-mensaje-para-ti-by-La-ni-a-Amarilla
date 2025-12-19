@@ -28,159 +28,211 @@
 }
 
 /* === COMPOSE MODAL === */
-.modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    /* Semi-transparent backdrop */
-    z-index: 2000;
-    /* Higher than FAB */
-    display: none;
-    /* Hidden by default */
-    align-items: center;
-    justify-content: center;
-    backdrop-filter: blur(2px);
-    animation: fadeInModal 0.3s ease-out;
-}
 
-@keyframes fadeInModal {
-    from {
-        opacity: 0;
-    }
+/* Ajustamos el tamaño específico para el Compose Modal */
+#composeModal .modal-content {
+    /* RESPONSIVE SIZE: Más ancho en pantallas grandes */
+    width: 80%;
+    max-width: 1000px;
+    /* Aumentado de 700px a 1000px para pantallas grandes */
 
-    to {
-        opacity: 1;
-    }
-}
+    /* ALTURA DINÁMICA: Ocupar una buena parte de la altura */
+    height: 85vh;
+    max-height: 900px;
 
-.modal-content {
     background-color: #fffaf0;
-    /* Light creamy background */
-    width: 90%;
-    max-width: 500px;
     border-radius: 15px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-    overflow: hidden;
-    position: relative;
-    border: 2px solid var(--mb-orange-btn);
-    animation: slideUpModal 0.3s ease-out;
+    border: 2px solid var(--mb-orange-btn, #F7A338);
     display: flex;
     flex-direction: column;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+    overflow: hidden;
+    /* Evitar scroll en el contenedor principal, queremos scroll dentro si hace falta */
 }
 
-@keyframes slideUpModal {
-    from {
-        transform: translateY(50px);
-        opacity: 0;
-    }
-
-    to {
-        transform: translateY(0);
-        opacity: 1;
-    }
-}
-
-.modal-header {
-    background-color: var(--mb-table-header);
-    /* #ffdab9 */
-    padding: 15px 20px;
+/* Header más elaborado */
+#composeModal .modal-header {
+    background-color: var(--mb-table-header, #ffdab9);
+    padding: 20px 30px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 2px solid rgba(0, 0, 0, 0.05);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    flex-shrink: 0;
+    /* No encoger header */
 }
 
-.modal-header h3 {
+#composeModal .modal-header h3 {
     margin: 0;
-    color: var(--mb-text);
-    /* #5d4037 */
+    color: var(--mb-text, #5d4037);
     font-family: 'Poppins', sans-serif;
-    font-size: 1.2rem;
+    font-size: 1.4rem;
+    font-weight: bold;
 }
 
-.close-btn {
+#composeModal .close-btn {
+    font-size: 2rem;
+    cursor: pointer;
     background: none;
     border: none;
-    font-size: 1.5rem;
-    cursor: pointer;
-    color: var(--mb-text);
+    color: #888;
     transition: color 0.2s;
 }
 
-.close-btn:hover {
-    color: #c0392b;
+#composeModal .close-btn:hover {
+    color: #d32f2f;
 }
 
-.modal-body {
-    padding: 20px;
+/* Body con Flexbox para que el FORM ocupe todo */
+#composeModal .modal-body {
+    padding: 30px;
+    flex: 1;
+    /* Ocupa el espacio restante */
+    display: flex;
+    flex-direction: column;
     font-family: 'Poppins', sans-serif;
+    overflow-y: auto;
+    /* Scroll si el contenido es muy alto en pantallas pequeñas */
 }
 
+/* El formulario también debe ser flex para estirar el textarea */
+#composeForm {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    /* Crece para llenar el body */
+    height: 100%;
+    width: 80%;
+}
+
+/* Form Styles */
 .form-group {
-    margin-bottom: 15px;
+    margin-bottom: 20px;
+}
+
+/* Grupo especial para el textarea que debe crecer */
+.form-group.full-height {
+    flex: 1;
+    /* Crece para ocupar todo el espacio vertical disponible */
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 0;
+    /* Quitamos margen abajo porque el footer da espacio */
 }
 
 .form-group label {
     display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-    color: var(--mb-text);
-    font-size: 0.9rem;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #4a3b2a;
+    font-size: 1rem;
 }
 
 .form-group input,
 .form-group textarea {
     width: 100%;
-    padding: 10px;
-    border: 2px solid #eee;
-    border-radius: 10px;
+    padding: 12px 15px;
+    border: 2px solid #ddd;
+    border-radius: 12px;
     font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
     box-sizing: border-box;
-    /* Fix padding issue */
-    background-color: rgba(255, 255, 255, 0.8);
-    transition: border-color 0.3s;
+    background-color: rgba(255, 255, 255, 0.9);
+    transition: all 0.3s;
 }
 
 .form-group input:focus,
 .form-group textarea:focus {
     border-color: var(--mb-orange-btn);
+    box-shadow: 0 0 8px rgba(247, 163, 56, 0.3);
     outline: none;
     background-color: #fff;
 }
 
-.form-group textarea {
-    resize: vertical;
-    min-height: 100px;
+/* Textarea que llena su contenedor padre (.form-group.full-height) */
+#composeModal textarea {
+    flex: 1;
+    /* Crece para llenar el form-group */
+    resize: none;
+    /* Quitamos resize manual para que sea responsivo automático */
+    min-height: 200px;
 }
 
-.modal-footer {
+/* Footer fijo abajo */
+#composeModal .modal-footer {
+    padding: 20px 30px;
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    gap: 15px;
+    gap: 20px;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+    flex-shrink: 0;
+    background-color: #fffaf0;
+    /* Asegurar fondo opaco */
 }
 
 .send-btn {
     background-color: var(--mb-orange-btn);
     color: white;
     border: none;
-    padding: 10px 20px;
-    border-radius: 20px;
+    padding: 12px 35px;
+    border-radius: 12px;
     font-weight: bold;
+    font-size: 1.1rem;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s, transform 0.1s;
     font-family: 'Poppins', sans-serif;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .send-btn:hover {
     background-color: var(--mb-orange-dark);
+    transform: translateY(-2px);
 }
 
 .draft-status {
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     color: #7f8c8d;
     font-style: italic;
+}
+
+/* --- RESPONSIVE --- */
+
+/* Pantallas Medianas (Laptops pequeñas / Tablets grandes) */
+@media (max-width: 1200px) {
+    #composeModal .modal-content {
+        width: 85%;
+        height: 80vh;
+    }
+}
+
+/* Tablets Portrait */
+@media (max-width: 800px) {
+    #composeModal .modal-content {
+        width: 95%;
+        height: 85vh;
+    }
+}
+
+/* Móviles */
+@media (max-width: 500px) {
+    #composeModal .modal-content {
+        width: 100%;
+        height: 100%;
+        /* Full screen */
+        border-radius: 0;
+        border: none;
+    }
+
+    /* En móvil, los inputs un poco menos padding para ganar espacio */
+    .form-group input,
+    .form-group textarea {
+        padding: 10px;
+    }
+
+    .fab-btn {
+        width: 50px;
+        height: 50px;
+        font-size: 1.5rem;
+    }
 }

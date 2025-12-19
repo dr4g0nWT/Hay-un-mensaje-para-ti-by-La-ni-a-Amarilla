@@ -43,6 +43,7 @@ exports.mailbox = async (req, res) => {
 
         res.render('mailbox', {
             user: req.session.user,
+            currentPage: 'mailbox',
             inbox,
             starred,
             drafts

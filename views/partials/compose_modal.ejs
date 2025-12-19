@@ -23,12 +23,14 @@
                     <input type="text" id="messageDate" readonly
                         style="background-color: transparent; border: none; font-weight: normal;">
                 </div>
-                <div class="form-group">
+                <div class="form-group full-height">
                     <textarea id="messageContent" name="content" placeholder="Escribe algo bonito..."
                         required></textarea>
                 </div>
                 <div class="modal-footer">
                     <span id="draftStatus" class="draft-status"></span>
+                    <button type="button" id="discardBtn" class="common-btn btn-danger" style="display: none;">Descartar
+                        🗑️</button>
                     <button type="submit" id="sendBtn" class="send-btn">Enviar ✉️</button>
                 </div>
             </form>
