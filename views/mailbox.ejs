@@ -5,6 +5,8 @@
     <%- include('partials/head') %>
         <title>Mi Buzón | La Niña Amarilla</title>
         <link rel="stylesheet" href="../css/mailbox.css">
+        <link rel="stylesheet" href="../css/mailbox_extras.css">
+        <link rel="stylesheet" href="../css/modals.css">
 </head>
 
 <body>
@@ -51,12 +53,32 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td><strong>Admin</strong></td>
-                                <td>Bienvenid@ al jardín</td>
-                                <td>18/12/2023</td>
-                                <td><a href="#">Leer</a></td>
-                            </tr>
+                            <% if(starred.length===0) { %>
+                                <tr>
+                                    <td colspan="4" style="text-align:center;">No tienes favoritos 🌻</td>
+                                </tr>
+                                <% } else { %>
+                                    <% starred.forEach(msg=> { %>
+                                        <tr class="clickable-row"
+                                            onclick="openMessage(<%= JSON.stringify(msg) %>, 'read')">
+                                            <td><strong>
+                                                    <%= msg.sender_name %>
+                                                </strong></td>
+                                            <td>
+                                                <%= msg.subject %>
+                                            </td>
+                                            <td>
+                                                <%= new Date(msg.created_at).toLocaleDateString() %>
+                                            </td>
+                                            <td class="action-cell" onclick="event.stopPropagation()">
+                                                <button class="action-btn star-btn active" title="Quitar de destacados"
+                                                    onclick="toggleFavorite('<%= msg.id %>', this)">⭐</button>
+                                                <button class="action-btn delete-btn" title="Eliminar"
+                                                    onclick="confirmDelete('<%= msg.id %>')">🗑️</button>
+                                            </td>
+                                        </tr>
+                                        <% }) %>
+                                            <% } %>
                         </tbody>
                     </table>
                 </div>
@@ -72,15 +94,43 @@
                                 <th>Asunto</th>
                                 <th>Mensaje (Previo)</th>
                                 <th>Fecha</th>
+                                <th>Acciones</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>Usuario123</td>
-                                <td>Gracias por el apoyo</td>
-                                <td>Me sentí muy identificado con...</td>
-                                <td>17/12/2023</td>
-                            </tr>
+                            <% if(inbox.length===0) { %>
+                                <tr>
+                                    <td colspan="5" style="text-align:center;">El buzón está vacío 🦗</td>
+                                </tr>
+                                <% } else { %>
+                                    <% inbox.forEach(msg=> { %>
+                                        <tr class="clickable-row"
+                                            onclick="openMessage(<%= JSON.stringify(msg) %>, 'read')">
+                                            <td>
+                                                <%= msg.sender_name %>
+                                            </td>
+                                            <td style="<%= msg.is_read ? '' : 'font-weight:bold;' %>">
+                                                <%= msg.subject %>
+                                            </td>
+                                            <td>
+                                                <%= msg.content.substring(0, 40) %>
+                                                    <%= msg.content.length> 40 ? '...' : '' %>
+                                            </td>
+                                            <td>
+                                                <%= new Date(msg.created_at).toLocaleDateString() %>
+                                            </td>
+                                            <td class="action-cell" onclick="event.stopPropagation()">
+                                                <button
+                                                    class="action-btn star-btn <%= msg.is_favorite ? 'active' : '' %>"
+                                                    onclick="toggleFavorite('<%= msg.id %>', this)">
+                                                    <%= msg.is_favorite ? '⭐' : '☆' %>
+                                                </button>
+                                                <button class="action-btn delete-btn"
+                                                    onclick="confirmDelete('<%= msg.id %>')">🗑️</button>
+                                            </td>
+                                        </tr>
+                                        <% }) %>
+                                            <% } %>
                         </tbody>
                     </table>
                 </div>
@@ -99,12 +149,30 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>(Sin destinatario)</td>
-                                <td>Mi historia personal...</td>
-                                <td>Hace 2 horas</td>
-                                <td><a href="#">Editar</a></td>
-                            </tr>
+                            <% if(drafts.length===0) { %>
+                                <tr>
+                                    <td colspan="4" style="text-align:center;">No hay borradores 🍃</td>
+                                </tr>
+                                <% } else { %>
+                                    <% drafts.forEach(msg=> { %>
+                                        <tr class="clickable-row"
+                                            onclick="openMessage(<%= JSON.stringify(msg) %>, 'edit')">
+                                            <td>
+                                                <%= msg.receiver_name || '(Sin destinatario)' %>
+                                            </td>
+                                            <td>
+                                                <%= msg.subject %>
+                                            </td>
+                                            <td>
+                                                <%= new Date(msg.updated_at).toLocaleString() %>
+                                            </td>
+                                            <td class="action-cell" onclick="event.stopPropagation()">
+                                                <button class="action-btn delete-btn"
+                                                    onclick="confirmDelete('<%= msg.id %>')">🗑️</button>
+                                            </td>
+                                        </tr>
+                                        <% }) %>
+                                            <% } %>
                         </tbody>
                     </table>
                 </div>
@@ -112,9 +180,20 @@
 
         </main>
 
-        <script src="../js/mailbox.js"></script>
 
-        <script src="../js/main.js"></script>
+        <!-- Botón Flotante para redactar -->
+        <button id="composeBtn" class="fab-btn" title="Redactar nuevo mensaje">+</button>
+
+        <!-- Modal de Redacción -->
+        <%- include('partials/compose_modal') %>
+
+            <!-- Common Modal -->
+            <%- include('../views/common/alert_modal') %>
+
+                <script src="../js/common_modal.js"></script>
+                <script src="../js/mailbox.js"></script>
+
+                <script src="../js/main.js"></script>
 </body>
 
 </html>

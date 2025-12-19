@@ -94,19 +94,21 @@
 
 /* Botón */
 .oasis-btn {
-    background-color: #f9a62b;
-    color: white;
-    text-decoration: none;
-    padding: 18px 35px;
-    border-radius: 50px;
+    /* Estética Visual */
+    background-color: var(--orange-btn);
+    color: var(--text-white);
+    border: 3px solid var(--text-white);
+    padding: 15px 70px;
+    font-size: 1.2rem;
     font-weight: bold;
-    font-size: 1rem;
-    text-align: center;
+    border-radius: 15px;
+    cursor: pointer;
+    font-family: var(--font-main);
+    letter-spacing: 3px;
     text-transform: uppercase;
-    letter-spacing: 1px;
-    transition: transform 0.2s, box-shadow 0.2s;
-    border: 2px solid white;
-    box-shadow: 0 4px 10px rgba(249, 166, 43, 0.4);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+    transition: all 0.2s ease;
+    white-space: nowrap;
 }
 
 .oasis-btn:hover {

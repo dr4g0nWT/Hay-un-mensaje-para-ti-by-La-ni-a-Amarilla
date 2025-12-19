@@ -1,0 +1,37 @@
+<div id="composeModal" class="modal-overlay">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3 id="modalTitle">Nuevo Mensaje</h3>
+            <button id="closeModalBtn" class="close-btn">&times;</button>
+        </div>
+        <div class="modal-body">
+            <form id="composeForm">
+                <!-- Hidden Input for Message ID (if editing draft) -->
+                <input type="hidden" id="messageId" name="messageId" value="">
+
+                <div class="form-group">
+                    <label for="recipient">Para:</label>
+                    <input type="text" id="recipient" name="recipient" placeholder="Nombre de usuario" required>
+                </div>
+                <div class="form-group">
+                    <label for="subject">Asunto:</label>
+                    <input type="text" id="subject" name="subject" placeholder="Asunto" required>
+                </div>
+                <!-- Mostrar fecha solo en modo lectura -->
+                <div class="form-group" id="dateGroup" style="display: none;">
+                    <label>Fecha:</label>
+                    <input type="text" id="messageDate" readonly
+                        style="background-color: transparent; border: none; font-weight: normal;">
+                </div>
+                <div class="form-group">
+                    <textarea id="messageContent" name="content" placeholder="Escribe algo bonito..."
+                        required></textarea>
+                </div>
+                <div class="modal-footer">
+                    <span id="draftStatus" class="draft-status"></span>
+                    <button type="submit" id="sendBtn" class="send-btn">Enviar ✉️</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

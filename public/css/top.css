@@ -1,0 +1,170 @@
+/* --- Sección Top de Jardines (Full Screen) --- */
+
+.top-section {
+    width: 100%;
+    min-height: 100vh;
+    /* Ocupa toda la pantalla */
+    position: relative;
+    /* Necesario para posicionar el arbusto abajo */
+
+    /* Flexbox para centrar el contenido principal */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    /* Fondo amarillo suave (ajusta el código hex si tienes uno específico) */
+    background-color: #ffeeb0;
+    background: linear-gradient(180deg, #fffbd5 0%, #ffeeb0 100%);
+
+    padding: 20px 20px 100px 20px;
+    /* Padding bottom extra para no tapar con el arbusto */
+    box-sizing: border-box;
+    scroll-snap-align: start;
+    /* Si usas scroll snap */
+    overflow: hidden;
+    /* Evita scroll horizontal si el arbusto es muy ancho */
+}
+
+.top-container {
+    max-width: 1200px;
+    width: 100%;
+    z-index: 2;
+    /* Para asegurar que el texto quede sobre el fondo */
+}
+
+.top-content-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 80px;
+    /* Espacio entre texto y video */
+    text-align: left;
+}
+
+/* --- Columna de Texto (Izquierda) --- */
+.top-text {
+    flex: 1;
+    max-width: 500px;
+}
+
+.top-title {
+    font-family: 'Georgia', serif;
+    color: #f9a62b;
+    /* Naranja/Dorado similar a la imagen */
+    font-size: 3.5rem;
+    margin-bottom: 30px;
+    font-weight: bold;
+}
+
+.top-text p {
+    color: #2c2c2c;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 25px;
+    font-weight: 500;
+}
+
+/* Bloque QR */
+.top-qr-block {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.qr-img {
+    width: 120px;
+    /* Antes era 60px. Prueba con 100px, 120px o 150px */
+    height: auto;
+    mix-blend-mode: multiply;
+    /* Mantiene la transparencia del fondo blanco */
+    display: block;
+    /* Asegura que se comporte bien como bloque */
+}
+
+.qr-text {
+    color: #f9a62b;
+    font-weight: bold;
+    font-size: 1.1rem;
+    padding-left: 20px;
+    /* Subido de 0.9rem a 1.1rem */
+    line-height: 1.3;
+}
+
+/* --- Columna de Video (Derecha) --- */
+.top-media {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.top-video {
+    width: 100%;
+    max-width: 500px;
+    aspect-ratio: 1 / 1;
+    /* Fuerza al video a ser cuadrado */
+    object-fit: cover;
+    /* Recorta el video para llenar el cuadrado */
+    border-radius: 40px;
+    /* Bordes muy redondeados (casi orgánicos) */
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    background-color: #a8cf45;
+    /* Color de fondo mientras carga */
+}
+
+/* --- Decoración Inferior (Arbusto) --- */
+.top-decoration {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    line-height: 0;
+    /* Elimina espacios extra debajo de la imagen */
+    z-index: 1;
+}
+
+.top-decoration img {
+    width: 100%;
+    height: auto;
+    min-height: 80px;
+    /* Altura mínima para que se vea bien */
+    object-fit: cover;
+    /* Cubre el ancho sin deformarse */
+    display: block;
+}
+
+/* --- Responsividad (Móvil) --- */
+@media (max-width: 900px) {
+    .top-section {
+        height: auto;
+        padding-bottom: 80px;
+        /* Espacio para el arbusto en móvil */
+    }
+
+    .top-content-wrapper {
+        flex-direction: column-reverse;
+        /* En móvil: Video arriba, texto abajo (opcional) */
+        gap: 40px;
+        text-align: center;
+    }
+
+    .top-content-wrapper {
+        flex-direction: column;
+        /* O normal: Texto arriba, video abajo */
+    }
+
+    .top-text {
+        text-align: left;
+        /* O center si prefieres */
+    }
+
+    .top-qr-block {
+        justify-content: flex-start;
+        /* Centrar o alinear a la izquierda según prefieras */
+    }
+
+    .top-title {
+        font-size: 2.5rem;
+    }
+}

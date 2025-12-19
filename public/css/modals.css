@@ -1,0 +1,67 @@
+/* === COMMON MODAL STYLES === */
+.common-modal {
+    max-width: 400px;
+    text-align: center;
+    border: none;
+}
+
+.common-header {
+    justify-content: center;
+    position: relative;
+    background-color: var(--mb-table-header, #ffdab9);
+}
+
+.common-header .close-btn {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+}
+
+.modal-icon {
+    font-size: 3rem;
+    margin-bottom: 10px;
+}
+
+/* Tipos de mensaje */
+.modal-type-success .common-header {
+    background-color: #a8e6cf;
+}
+
+.modal-type-error .common-header {
+    background-color: #ff8b94;
+    color: white;
+}
+
+.modal-type-warning .common-header {
+    background-color: #ffd3b6;
+}
+
+.common-btn {
+    padding: 8px 16px;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    font-weight: bold;
+    margin: 0 5px;
+    transition: transform 0.1s;
+}
+
+.common-btn:active {
+    transform: scale(0.95);
+}
+
+.btn-primary {
+    background-color: var(--mb-orange-btn, #F7A338);
+    color: white;
+}
+
+.btn-secondary {
+    background-color: #ddd;
+    color: #333;
+}
+
+.btn-danger {
+    background-color: #e74c3c;
+    color: white;
+}

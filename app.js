@@ -60,6 +60,7 @@ app.use((req, res, next) => {
 // --- RUTAS ---
 app.use('/', require('./routes/pages'));
 app.use('/', require('./routes/auth'));
+app.use('/messages', require('./routes/messages'));
 
 // Iniciar Servidor
 const PORT = process.env.PORT || 3000;
