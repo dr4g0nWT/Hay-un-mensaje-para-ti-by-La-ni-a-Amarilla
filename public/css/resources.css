@@ -78,6 +78,14 @@
     max-width: 1400px;
 }
 
+/* --- ENLACES DE TARJETAS --- */
+.resource-card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    /* Ensure it wraps the div properly */
+}
+
 /* --- DISEÑO DE CADA TARJETA --- */
 .resource-card {
     /* Efecto Cristal / Borde Blanco */

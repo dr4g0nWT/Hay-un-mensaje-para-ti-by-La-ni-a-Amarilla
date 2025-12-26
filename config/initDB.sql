@@ -48,5 +48,3 @@ CREATE INDEX idx_receiver ON messages(receiver_id);
 
 -- Índice para buscar rápidamente los mensajes que he enviado
 CREATE INDEX idx_sender ON messages(sender_id);
-
-ALTER TABLE messages ADD updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP;

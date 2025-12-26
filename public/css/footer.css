@@ -1,0 +1,230 @@
+/* --- Sección Redes y Contacto (Full Screen) --- */
+
+.social-section {
+    width: 100%;
+    min-height: 100vh;
+    /* Ocupa toda la pantalla */
+    position: relative;
+    overflow: hidden;
+
+    /* Mismo degradado o ajustado para el final */
+    background: linear-gradient(180deg, #fffbd5 0%, #fde4ce 100%);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* Centrado vertical */
+    align-items: center;
+    /* Centrado horizontal */
+
+    padding: 40px 20px;
+    box-sizing: border-box;
+    scroll-snap-align: start;
+    /* Scroll completo */
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+
+/* Decoración de fondo */
+.bg-deco {
+    position: absolute;
+    z-index: 1;
+    pointer-events: none;
+    opacity: 0.6;
+}
+
+.deco-top-right {
+    top: -10%;
+    right: -10%;
+    width: 60%;
+    max-width: 800px;
+    transform: rotate(10deg);
+}
+
+.deco-bottom-left {
+    bottom: -10%;
+    left: -10%;
+    width: 60%;
+    max-width: 800px;
+    transform: rotate(-10deg);
+    /* Try to make them meet/overlap slightly in the middle if desired, 
+       or just be very large as requested */
+}
+
+.social-container {
+    max-width: 1200px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 50px;
+    /* Espacio entre título, contenido y copyright */
+    z-index: 2;
+    position: relative;
+}
+
+/* --- Título Sección --- */
+.section-title {
+    font-family: 'Georgia', serif;
+    color: #f9a62b;
+    font-size: 3.5rem;
+    margin: 0;
+    font-weight: bold;
+    line-height: 1.1;
+    text-align: center;
+}
+
+.social-content {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 60px;
+    /* Separación horizontal entre los grupos */
+    width: 100%;
+}
+
+.social-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+    flex: 1;
+    min-width: 250px;
+    /* Evita que se encojan demasiado */
+}
+
+/* --- El Rectángulo Amarillo (Etiqueta) --- */
+.yellow-label {
+    background-color: #f9a62b;
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 1rem;
+    min-width: 140px;
+    /* Fixed min-width for consistency */
+    height: 50px;
+    border-radius: 12px;
+    box-shadow: 0 4px 0 rgba(0, 0, 0, 0.1);
+    cursor: default;
+    user-select: none;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 20px;
+
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    white-space: nowrap;
+}
+
+/* Style specifically for the icon inside the label */
+.label-icon {
+    height: 24px;
+    width: auto;
+    display: block;
+    filter: brightness(0) invert(1);
+    /* Makes the icon white to match the text color */
+}
+
+/* --- Iconos y Contenido --- */
+.social-icons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.icon-link img {
+    width: 60px;
+    height: auto;
+    transition: transform 0.2s ease, filter 0.2s ease;
+    display: block;
+}
+
+.icon-link:hover img {
+    transform: scale(1.15) rotate(5deg);
+    filter: brightness(1.1);
+}
+
+/* --- Location Styling --- */
+.location-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    text-align: center;
+}
+
+.location-text {
+    color: #2c2c2c;
+    /* Updated color to be darker like the image usually implies */
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* --- Email Styling --- */
+.text-link {
+    text-decoration: none;
+    transition: transform 0.2s ease;
+}
+
+.text-link:hover {
+    transform: scale(1.05);
+}
+
+.text-link p {
+    color: #d97b25;
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+/* --- Copyright --- */
+.social-copyright {
+    margin-top: 20px;
+}
+
+.social-copyright p {
+    color: #d97b25;
+    font-size: 0.9rem;
+    font-weight: 600;
+    opacity: 0.8;
+}
+
+/* --- Responsive (Móvil) --- */
+@media (max-width: 960px) {
+    .section-title {
+        font-size: 2.8rem;
+    }
+
+    .social-content {
+        gap: 50px;
+    }
+
+    .yellow-label {
+        min-width: 120px;
+        height: 45px;
+        font-size: 0.9rem;
+    }
+
+    .label-icon {
+        height: 20px;
+    }
+
+    .deco-top-right {
+        width: 100%;
+        top: -5%;
+        right: -20%;
+        opacity: 0.4;
+    }
+
+    .deco-bottom-left {
+        width: 100%;
+        bottom: -5%;
+        left: -20%;
+        opacity: 0.4;
+    }
+}

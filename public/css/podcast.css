@@ -1,0 +1,189 @@
+/* --- Sección Podcast (Versión Actualizada) --- */
+
+.podcast-section {
+    width: 100%;
+    min-height: 100vh;
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(135deg, #fffbd5 0%, #fde4ce 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+    box-sizing: border-box;
+    scroll-snap-align: start;
+}
+
+/* Decoración de fondo (sin cambios) */
+.bg-deco {
+    position: absolute;
+    z-index: 1;
+    pointer-events: none;
+    opacity: 0.6;
+}
+
+.deco-top-right {
+    top: -50px;
+    right: -50px;
+    width: 300px;
+}
+
+.deco-bottom-left {
+    bottom: 0;
+    left: 0;
+    width: 250px;
+}
+
+
+/* Contenedor Principal */
+.podcast-container {
+    max-width: 1200px;
+    width: 100%;
+    z-index: 2;
+    position: relative;
+}
+
+.podcast-content-wrapper {
+    display: flex;
+    align-items: center;
+    /* Centrado verticalmente */
+    justify-content: center;
+    gap: 80px;
+    /* Separación amplia entre la columna izq y der */
+}
+
+/* --- COLUMNA IZQUIERDA (Video + QR) --- */
+.podcast-left-col {
+    flex: 1;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    /* Espacio entre el video y el bloque de Spotify */
+}
+
+/* Contenedor relativo para posicionar el micro */
+.video-container-relative {
+    position: relative;
+    width: 100%;
+    /* Aseguramos que el micro pueda salirse un poco si es necesario, 
+       o quedarse dentro. Si quieres que el micro se "salga" del video, 
+       no uses overflow: hidden aquí. */
+}
+
+.podcast-video {
+    width: 100%;
+    border-radius: 30px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+    display: block;
+    aspect-ratio: 16 / 9;
+    /* O la proporción que tenga tu video */
+    object-fit: cover;
+}
+
+/* Micrófono Superpuesto */
+.mic-overlay {
+    position: absolute;
+    bottom: -20px;
+    /* Ajusta para subir/bajar respecto al borde */
+    right: -20px;
+    /* Ajusta para izq/der respecto al borde */
+    width: 80px;
+    /* Tamaño del micro */
+    height: auto;
+    filter: drop-shadow(0 5px 10px rgba(0, 0, 0, 0.2));
+    z-index: 3;
+    transform: rotate(15deg);
+    /* Un poco inclinado queda más dinámico */
+}
+
+/* Bloque Spotify (Texto + QR) */
+.spotify-block {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgba(255, 255, 255, 0.4);
+    /* Fondo sutil opcional */
+    padding: 15px;
+    border-radius: 15px;
+    gap: 20px;
+}
+
+.spotify-text {
+    flex: 1;
+    font-size: 0.95rem;
+    color: #d97b25;
+    /* Un tono naranja/tierra */
+    font-weight: bold;
+    line-height: 1.4;
+    text-align: right;
+    /* Texto alineado a la derecha, pegado al QR */
+}
+
+.qr-wrapper img {
+    width: 90px;
+    height: auto;
+    mix-blend-mode: multiply;
+    display: block;
+}
+
+/* --- COLUMNA DERECHA (Texto Principal) --- */
+.podcast-right-col {
+    flex: 1;
+    max-width: 550px;
+    text-align: left;
+}
+
+.podcast-title {
+    font-family: 'Georgia', serif;
+    color: #f9a62b;
+    font-size: 3.5rem;
+    margin-bottom: 30px;
+    font-weight: bold;
+    line-height: 1.1;
+}
+
+.podcast-desc {
+    color: #2c2c2c;
+    font-size: 1.15rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    font-weight: 500;
+}
+
+/* --- Responsive (Móvil) --- */
+@media (max-width: 960px) {
+    .podcast-content-wrapper {
+        flex-direction: column;
+        gap: 40px;
+    }
+
+    /* En móvil, quizás quieras el video arriba y texto abajo, 
+       o al revés. Por defecto es Video arriba. */
+
+    .podcast-left-col,
+    .podcast-right-col {
+        max-width: 100%;
+        text-align: center;
+    }
+
+    .mic-overlay {
+        bottom: -15px;
+        right: -10px;
+        width: 60px;
+    }
+
+    .spotify-block {
+        flex-direction: column;
+        /* En móvil, texto arriba del QR */
+        text-align: center;
+    }
+
+    .spotify-text {
+        text-align: center;
+    }
+
+    .podcast-title {
+        font-size: 2.5rem;
+    }
+}

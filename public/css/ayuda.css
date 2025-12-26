@@ -1,0 +1,209 @@
+/* --- Sección Ayuda (Full Screen) --- */
+
+.ayuda-section {
+    width: 100%;
+    min-height: 100vh;
+    /* Ocupa toda la pantalla */
+
+    /* Gradiente basado en la imagen 2: más naranja/rojizo arriba a la izquierda */
+    background: linear-gradient(135deg, #f5a89e 0%, #fde4ce 40%, #fffbd5 100%);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 20px;
+    box-sizing: border-box;
+    scroll-snap-align: start;
+    /* Si usas scroll snap */
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    color: #2c2c2c;
+}
+
+.ayuda-container {
+    max-width: 1200px;
+    width: 100%;
+}
+
+.ayuda-content-wrapper {
+    display: flex;
+    align-items: flex-start;
+    /* Alineación superior */
+    justify-content: space-between;
+    gap: 60px;
+}
+
+/* --- COLUMNA IZQUIERDA (Info) --- */
+.ayuda-info-col {
+    flex: 3;
+    /* Esta columna ocupa más espacio */
+    text-align: left;
+}
+
+/* Cabecera: Título + Teléfono */
+.ayuda-header-block {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 50px;
+    gap: 20px;
+}
+
+.ayuda-title-wrapper {
+    position: relative;
+    max-width: 75%;
+}
+
+.ayuda-contact-title {
+    font-family: 'Georgia', serif;
+    color: #fefefe;
+    /* Color blanco roto */
+    font-size: 2.2rem;
+    margin: 0;
+    font-weight: bold;
+    position: relative;
+    z-index: 2;
+    line-height: 1.2;
+}
+
+/* El efecto de subrayado "scratch" */
+.ayuda-contact-title::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 0;
+    width: 100%;
+    height: 25px;
+    /* IMPORTANTE: Necesitas esta imagen en tus assets */
+    background: url('../assets/img/subrayado-scratch.png') no-repeat center/contain;
+    opacity: 0.8;
+    z-index: -1;
+}
+
+.ayuda-phone-img {
+    width: 130px;
+    height: auto;
+    transform: rotate(-15deg);
+    /* Ligera rotación como en la imagen */
+}
+
+/* Bloques de texto y separadores */
+.ayuda-block-title {
+    font-size: 1.6rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #1a1a1a;
+}
+
+.ayuda-block-text {
+    font-size: 1.1rem;
+    line-height: 1.5;
+    margin-bottom: 10px;
+}
+
+.phone-numbers {
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+.ayuda-link {
+    color: #1a1a1a;
+    text-decoration: underline;
+    font-weight: bold;
+    word-break: break-all;
+    /* Asegura que el enlace largo no rompa el diseño en móvil */
+}
+
+.ayuda-separator {
+    border: 0;
+    border-top: 3px solid #1a1a1a;
+    margin: 30px 0;
+    opacity: 1;
+}
+
+/* --- COLUMNA DERECHA (Visual) --- */
+.ayuda-visual-col {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.ayuda-main-title {
+    font-family: 'Georgia', serif;
+    color: #d99a25;
+    /* Color dorado/naranja de la imagen */
+    font-size: 4.5rem;
+    margin-bottom: 40px;
+    font-weight: bold;
+    line-height: 1;
+}
+
+.ayuda-main-img {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    display: block;
+    /* Propiedad para que el pixel art se vea nítido */
+    image-rendering: pixelated;
+    filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.1));
+}
+
+/* --- Responsive (Móvil y Tablets) --- */
+@media (max-width: 968px) {
+    .ayuda-section {
+        height: auto;
+        /* Permite scroll en móvil si es necesario */
+        padding: 80px 20px;
+    }
+
+    .ayuda-content-wrapper {
+        /* Invertimos el orden: Título e imagen principal arriba, info abajo */
+        flex-direction: column-reverse;
+        gap: 60px;
+    }
+
+    .ayuda-info-col,
+    .ayuda-visual-col {
+        flex: auto;
+        width: 100%;
+        text-align: center;
+    }
+
+    /* Ajustes en la columna de info para móvil */
+    .ayuda-header-block {
+        flex-direction: column;
+        /* Teléfono debajo del título */
+        gap: 30px;
+    }
+
+    .ayuda-title-wrapper {
+        max-width: 100%;
+    }
+
+    /* Centrar el subrayado */
+    .ayuda-contact-title::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    /* Tamaños de fuente móvil */
+    .ayuda-main-title {
+        font-size: 3.5rem;
+        margin-bottom: 30px;
+    }
+
+    .ayuda-contact-title {
+        font-size: 2rem;
+    }
+
+    .phone-numbers {
+        font-size: 1.1rem;
+    }
+
+    /* Centrar textos */
+    .ayuda-block-text,
+    .ayuda-block-title {
+        text-align: center;
+    }
+}

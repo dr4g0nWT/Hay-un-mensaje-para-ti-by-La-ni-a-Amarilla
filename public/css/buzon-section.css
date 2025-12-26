@@ -1,0 +1,124 @@
+/* --- Sección Buzón (Home) --- */
+
+.buzon-section {
+    width: 100%;
+    min-height: 100vh;
+    /* Adjust height as needed */
+    position: relative;
+    background-image:
+        linear-gradient(to bottom, rgba(255, 238, 176, 0.6), rgba(255, 238, 176, 0.2)),
+        url('../assets/img/buzon-fondo.jpg');
+    background-size: cover;
+    background-position: center;
+    image-rendering: pixelated;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    box-sizing: border-box;
+    scroll-snap-align: start;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    overflow: hidden;
+}
+
+/* Header similar to the image */
+.buzon-header {
+    text-align: center;
+    margin-bottom: 30px;
+    z-index: 10;
+}
+
+.buzon-title {
+    font-family: 'Georgia', serif;
+    color: #e67e22;
+    /* Matches mailbox title color */
+    font-size: 3rem;
+    font-weight: bold;
+    margin: 0;
+    text-shadow: 2px 2px 0px #fff;
+}
+
+/* Container to center the mailbox and overlay content */
+.buzon-content-wrapper {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 1000px;
+}
+
+.buzon-img {
+    width: 200px;
+    max-width: 60%;
+    height: auto;
+    image-rendering: pixelated;
+    margin-bottom: 30px;
+    filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.1));
+    transition: transform 0.3s ease;
+}
+
+.buzon-img:hover {
+    transform: scale(1.05) rotate(2deg);
+}
+
+/* Info Box / Text Overlay replacing the buttons */
+.buzon-info-box {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 30px 40px;
+    border-radius: 20px;
+    text-align: center;
+    max-width: 600px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    border: 3px solid #F7A338;
+}
+
+.buzon-description {
+    color: #5d4037;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 25px;
+}
+
+.buzon-btn {
+    display: inline-block;
+    background-color: #F7A338;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1rem;
+    padding: 12px 30px;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.buzon-btn:hover {
+    background-color: #d48625;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+    .buzon-section {
+        min-height: auto;
+        padding: 50px 20px;
+    }
+
+    .buzon-title {
+        font-size: 2rem;
+    }
+
+    .buzon-img {
+        width: 150px;
+    }
+
+    .buzon-info-box {
+        padding: 20px;
+        width: 100%;
+    }
+}
