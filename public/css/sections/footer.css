@@ -3,24 +3,16 @@
 .social-section {
     width: 100%;
     min-height: 100vh;
-    /* Ocupa toda la pantalla */
     position: relative;
     overflow: hidden;
-
-    /* Mismo degradado o ajustado para el final */
     background: linear-gradient(180deg, #fffbd5 0%, #fde4ce 100%);
-
     display: flex;
     flex-direction: column;
     justify-content: center;
-    /* Centrado vertical */
     align-items: center;
-    /* Centrado horizontal */
-
     padding: 40px 20px;
     box-sizing: border-box;
     scroll-snap-align: start;
-    /* Scroll completo */
     font-family: 'Helvetica Neue', Arial, sans-serif;
 }
 
@@ -46,8 +38,6 @@
     width: 60%;
     max-width: 800px;
     transform: rotate(-10deg);
-    /* Try to make them meet/overlap slightly in the middle if desired, 
-       or just be very large as requested */
 }
 
 .social-container {
@@ -57,7 +47,6 @@
     flex-direction: column;
     align-items: center;
     gap: 50px;
-    /* Espacio entre título, contenido y copyright */
     z-index: 2;
     position: relative;
 }
@@ -79,7 +68,6 @@
     align-items: flex-start;
     flex-wrap: wrap;
     gap: 60px;
-    /* Separación horizontal entre los grupos */
     width: 100%;
 }
 
@@ -90,7 +78,6 @@
     gap: 25px;
     flex: 1;
     min-width: 250px;
-    /* Evita que se encojan demasiado */
 }
 
 /* --- El Rectángulo Amarillo (Etiqueta) --- */
@@ -100,30 +87,25 @@
     font-weight: bold;
     font-size: 1rem;
     min-width: 140px;
-    /* Fixed min-width for consistency */
     height: 50px;
     border-radius: 12px;
     box-shadow: 0 4px 0 rgba(0, 0, 0, 0.1);
     cursor: default;
     user-select: none;
-
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 0 20px;
-
     text-transform: uppercase;
     letter-spacing: 1.5px;
     white-space: nowrap;
 }
 
-/* Style specifically for the icon inside the label */
 .label-icon {
     height: 24px;
     width: auto;
     display: block;
     filter: brightness(0) invert(1);
-    /* Makes the icon white to match the text color */
 }
 
 /* --- Iconos y Contenido --- */
@@ -158,7 +140,6 @@
 
 .location-text {
     color: #2c2c2c;
-    /* Updated color to be darker like the image usually implies */
     font-size: 1rem;
     font-weight: 600;
     line-height: 1.5;

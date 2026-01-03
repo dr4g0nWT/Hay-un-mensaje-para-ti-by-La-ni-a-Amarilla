@@ -2,25 +2,14 @@
 
 .oasis-section {
     width: 100%;
-    /* Altura mínima del 100% de la ventana del navegador */
     min-height: 100vh;
-
-    /* Flexbox para centrar todo el contenido vertical y horizontalmente */
     display: flex;
     flex-direction: column;
     justify-content: center;
-    /* Centrado vertical */
     align-items: center;
-    /* Centrado horizontal */
-
-    /* Gradiente de fondo */
     background: linear-gradient(90deg, #fffbd5 0%, #fde4ce 40%, #f5a89e 100%);
-
     padding: 20px;
-    /* Un poco de margen de seguridad */
     box-sizing: border-box;
-
-    /* Opcional: Si usas scroll-snap en tu web, añade esto: */
     scroll-snap-align: start;
 }
 
@@ -28,7 +17,6 @@
     max-width: 1200px;
     width: 100%;
     text-align: center;
-    /* Asegura que el contenedor no sea más alto que la pantalla */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -39,9 +27,7 @@
     font-family: 'Georgia', serif;
     color: #fdbb4b;
     font-size: 3.5rem;
-    /* Un poco más grande para pantallas full */
     margin-bottom: 5vh;
-    /* Usamos vh para que el margen sea proporcional a la altura */
     font-weight: bold;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.05);
 }
@@ -52,7 +38,6 @@
     justify-content: center;
     align-items: center;
     gap: 60px;
-    /* Más espacio entre video y texto */
     text-align: left;
 }
 
@@ -61,13 +46,11 @@
     flex: 1;
     display: flex;
     justify-content: flex-end;
-    /* Empuja el video hacia el centro */
 }
 
 .oasis-video {
     width: 100%;
     max-width: 550px;
-    /* Limitamos el ancho para que no sea gigante */
     height: auto;
     border-radius: 30px;
     display: block;
@@ -86,7 +69,6 @@
 .oasis-text p {
     color: #2c2c2c;
     font-size: 1.2rem;
-    /* Texto un poco más legible */
     line-height: 1.6;
     margin-bottom: 40px;
     font-weight: 500;
@@ -94,7 +76,6 @@
 
 /* Botón */
 .oasis-btn {
-    /* Estética Visual */
     background-color: var(--orange-btn);
     color: var(--text-white);
     border: 3px solid var(--text-white);
@@ -132,7 +113,6 @@
 @media (max-width: 900px) {
     .oasis-section {
         height: auto;
-        /* En móvil permitimos scroll normal si el contenido es muy largo */
         min-height: 100vh;
         padding: 60px 20px;
     }

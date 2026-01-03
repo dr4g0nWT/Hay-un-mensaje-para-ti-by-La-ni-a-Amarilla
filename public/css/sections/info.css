@@ -1,12 +1,10 @@
 /* Sección Info - Fondo Amarillo */
 .info-section {
     background-color: #ffeeb0;
-    /* Amarillo suave */
     display: flex;
     align-items: center;
     justify-content: center;
     color: #4a3b2a;
-    /* Texto marrón oscuro */
 }
 
 /* Contenedor interno Grid */
@@ -15,7 +13,6 @@
     max-width: 1200px;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    /* Mitad texto, mitad imagen */
     gap: 50px;
     align-items: center;
 }
@@ -23,7 +20,6 @@
 /* Estilos de Texto */
 .breadcrumbs {
     color: #fca311;
-    /* Naranja del diseño */
     font-weight: bold;
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -33,7 +29,6 @@
 
 .info-title {
     font-family: var(--font-title);
-    /* Abril Fatface */
     font-size: 4rem;
     color: #fca311;
     margin-bottom: 2rem;
@@ -57,39 +52,18 @@
 }
 
 .mailbox-img {
-    /* width: 100%;
-    max-width: 550px;
-    height: auto; */
-    /* Un pequeño filtro drop-shadow para que resalte sobre el amarillo */
-    /* filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.1)); */
-
-
-    /* 1. Definimos Tamaño y Posición */
     width: 500px;
-    /* Tamaño base grande */
     height: 500px;
-    /* Asegura que no se salga en pantallas medianas, manteniendo la proporción */
     max-width: 90%;
     aspect-ratio: 1 / 1;
     margin: auto;
-    /* Centra el blob en su columna derecha */
-
-    /* 2. La Imagen de Fondo (El buzón) */
-    /* Asegúrate de que la ruta a tu imagen sea correcta */
-    background-image: url('../assets/img/buzon.png');
+    background-image: url('../../assets/img/buzon.png');
+    /* Adjusted path ../../ */
     background-size: cover;
-    /* La imagen cubre toda la forma sin deformarse */
     background-position: center;
     background-repeat: no-repeat;
-
-    /* 3. LA CLAVE: BORDER-RADIUS ORGÁNICO (El efecto "Blob") */
-    /* Usamos 8 valores para controlar cada esquina independientemente */
     border-radius: 15% 145% 30% 40% / 155% 20% 150% 40%;
-
-    /* 4. Estética Adicional (Opcional) */
-    /* Sombra suave para darle profundidad y que parezca recortado */
     box-shadow: 15px 15px 40px rgba(0, 0, 0, 0.2);
-    /* Transición suave para animaciones */
     transition: all 0.6s ease-in-out;
 }
 
@@ -97,7 +71,6 @@
 @media (max-width: 900px) {
     .info-container {
         grid-template-columns: 1fr;
-        /* Una columna */
         text-align: center;
         gap: 30px;
         padding: 40px 0;

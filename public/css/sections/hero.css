@@ -1,0 +1,240 @@
+/* =========================================
+   PUBLIC/CSS/SECTIONS/HERO.CSS
+   ========================================= */
+
+/* === 1. CONTENEDOR PRINCIPAL (FONDO) === */
+.hero-section {
+    /* Fondo del jardín */
+    background-image: url('../../assets/img/fondo-jardin.jpg');
+    /* Adjusted path ../../ */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    /* Dimensiones */
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+
+    /* Usamos Flexbox para centrar nuestro Grid Layout verticalmente */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* === 2. EL GRID INVISIBLE === */
+.hero-layout {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* === 3. ÁREA DE TEXTO (COLUMNA IZQUIERDA) === */
+.hero-text-area {
+    padding-left: 10%;
+    padding-right: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    z-index: 5;
+}
+
+/* --- TIPOGRAFÍA --- */
+.main-title {
+    font-family: var(--font-title);
+    font-weight: normal;
+    font-size: clamp(3rem, 5vw, 6rem);
+    line-height: 1.1;
+    margin-bottom: 0;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+    color: var(--text-white);
+    white-space: nowrap;
+}
+
+.main-title .highlight-text {
+    display: block;
+    font-size: clamp(5rem, 10vw, 11rem);
+    line-height: 0.9;
+    margin-top: -10px;
+    word-wrap: break-word;
+}
+
+/* --- BOTÓN ABRIR --- */
+.btn-abrir {
+    background-color: var(--orange-btn);
+    color: var(--text-white);
+    border: 3px solid var(--text-white);
+    padding: 15px 70px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-radius: 15px;
+    cursor: pointer;
+    font-family: var(--font-main);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+    transition: all 0.2s ease;
+    white-space: nowrap;
+
+    position: absolute;
+    bottom: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 20;
+}
+
+.btn-abrir:hover {
+    transform: translateX(-50%) scale(1.05) translateY(-3px);
+    background-color: #ffb357;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+}
+
+/* --- ANIMACIONES Y OVERLAY --- */
+.fade-in-load {
+    animation: fadeIn 1.5s ease-out forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* Message Overlay - Refactor? Keeping here for now as part of Hero interaction */
+.message-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.85);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+}
+
+.message-overlay.visible {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.message-card {
+    background: #fffaf0;
+    color: #333;
+    padding: 50px;
+    border-radius: 25px;
+    max-width: 90%;
+    width: 600px;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    transform: scale(0.9);
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.message-overlay.visible .message-card {
+    transform: scale(1);
+}
+
+.message-text {
+    font-size: 1.4rem;
+    font-style: italic;
+    margin: 30px 0;
+    line-height: 1.6;
+}
+
+.close-btn {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-size: 2rem;
+    cursor: pointer;
+    color: #aaa;
+}
+
+.btn-link {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 30px;
+    background-color: var(--orange-btn);
+    color: white;
+    text-decoration: none;
+    border-radius: 30px;
+    font-weight: bold;
+}
+
+/* --- RESPONSIVE --- */
+
+/* Mobile (< 768px) */
+@media (max-width: 768px) {
+
+    /* From existing hero.css code for mobile */
+    .hero-layout {
+        grid-template-columns: 1fr;
+        grid-template-rows: 55% 45%;
+    }
+
+    .hero-text-area {
+        padding-left: 0;
+        align-items: center;
+        text-align: center;
+        justify-content: flex-end;
+        padding-bottom: 20px;
+        padding-top: 50px;
+    }
+
+    .main-title {
+        font-size: 3rem;
+        white-space: normal;
+        padding: 0 20px;
+    }
+
+    .main-title .highlight-text {
+        font-size: 4.5rem;
+        margin-top: 5px;
+    }
+
+    .btn-abrir {
+        bottom: 15%;
+    }
+
+    .hero-section {
+        background-position: center bottom;
+    }
+}
+
+/* Tablet (768px - 1024px) */
+@media (min-width: 768px) and (max-width: 1024px) {
+
+    /* Adjust as needed */
+    .hero-layout {
+        /* Keep grid or adjust */
+    }
+}
+
+/* PC (> 1024px) */
+@media (min-width: 1024px) {
+    /* Default is mostly PC */
+}
+
+/* Large PC (> 1440px) */
+@media (min-width: 1440px) {
+    .main-title {
+        font-size: 10rem;
+        /* Example scaling */
+    }
+}

@@ -9,7 +9,6 @@
 
 body {
     background-color: var(--mb-yellow-bg);
-    /* Prevenir scroll horizontal indeseado */
     overflow-x: hidden;
 }
 
@@ -17,26 +16,20 @@ body {
 .mailbox-hero {
     position: relative;
     width: 100%;
-    /* Usamos min-height para que crezca si el contenido lo empuja */
     min-height: 250px;
-
     background-size: 100% 100%;
-    /* Nota: En móvil puede verse deformado, considera 'cover' para móvil */
     background-image:
         linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.1)),
-        url('../assets/img/buzon-fondo.jpg');
+        url('../../assets/img/buzon-fondo.jpg');
+    /* Adjusted path */
     background-position: center center;
     background-repeat: no-repeat;
     image-rendering: pixelated;
-
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    /* Alinea items abajo */
     align-items: center;
-
     padding-top: 100px;
-    /* Espacio para el header fijo */
     padding-bottom: 20px;
     z-index: 1;
 }
@@ -44,7 +37,6 @@ body {
 /* Imagen del Buzón */
 .central-mailbox-img {
     width: 180px;
-    /* Hacemos que la imagen sea responsive pero con tope */
     max-width: 40%;
     height: auto;
     image-rendering: pixelated;
@@ -60,7 +52,6 @@ body {
 /* Barra de Vida */
 .health-bar-container {
     position: absolute;
-    /* Ajustado para pantallas grandes */
     top: 120px;
     right: 30px;
     display: flex;
@@ -94,13 +85,9 @@ body {
     margin-top: 40px;
     margin-bottom: 20px;
     padding: 0 20px;
-    /* Padding lateral para que no toque los bordes en móvil */
-
     font-family: 'Abril Fatface', cursive;
-    /* CLAMP: El tamaño cambia entre 1.8rem y 3rem según el ancho de pantalla */
     font-size: clamp(1.8rem, 5vw, 3rem);
     line-height: 1.2;
-
     color: #e67e22;
     text-shadow: 2px 2px 0px #fff;
     text-align: center;
@@ -113,11 +100,9 @@ body {
     display: flex;
     justify-content: center;
     gap: 15px;
-    /* IMPORTANTE: Permite que los botones bajen de línea si no caben */
     flex-wrap: wrap;
     margin-top: 20px;
     padding: 0 20px 30px;
-    /* Padding lateral */
 }
 
 .nav-btn {
@@ -134,8 +119,6 @@ body {
     transition: all 0.3s ease;
     text-transform: uppercase;
     letter-spacing: 1px;
-
-    /* En móvil, que no se hagan minúsculos */
     flex: 0 1 auto;
 }
 
@@ -150,11 +133,9 @@ body {
 .mailbox-container {
     max-width: 1000px;
     width: 100%;
-    /* Asegura ancho total */
     margin: 0 auto 50px;
     padding: 20px;
     box-sizing: border-box;
-    /* Evita que el padding sume al ancho */
 }
 
 /* Barra de Filtros */
@@ -168,31 +149,25 @@ body {
     padding: 10px 15px;
     border-radius: 20px;
     border: 2px solid #ddd;
-    /* RESPONSIVE: Ocupa el 100% pero no más de 300px */
     width: 100%;
     max-width: 300px;
     font-family: 'Poppins', sans-serif;
 }
 
 /* === TABLAS RESPONSIVE === */
-/* Contenedor que permite scroll horizontal solo en la tabla */
 .table-responsive {
     width: 100%;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
-    /* Scroll suave en iOS */
     border-radius: 15px;
-    /* Mantiene bordes redondeados */
 }
 
 .mail-table {
     width: 100%;
-    /* Asegura que la tabla no se colapse a un tamaño ilegible */
     min-width: 600px;
     border-collapse: collapse;
     background: rgba(255, 255, 255, 0.8);
     border-radius: 15px;
-    /* overflow hidden quitado de aquí y movido al wrapper */
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
 }
 
@@ -207,10 +182,8 @@ body {
     text-align: left;
     border-bottom: 1px solid rgba(0, 0, 0, 0.05);
     white-space: nowrap;
-    /* Evita que el texto de las celdas se rompa feo */
 }
 
-/* Permitir que el "Mensaje Previo" sí haga salto de línea si es largo */
 .mail-table td:nth-child(3) {
     white-space: normal;
     min-width: 200px;
@@ -256,36 +229,25 @@ body {
    MEDIA QUERIES (ESTILOS PARA MÓVIL)
    ========================================= */
 @media (max-width: 768px) {
-
-    /* Ajustes del Hero */
     .mailbox-hero {
         padding-top: 100px;
-        /* Más espacio arriba */
         min-height: 200px;
         background-size: cover;
-        /* En móvil cover queda mejor para no deformar tanto */
     }
 
-    /* Reposicionar la barra de vida para que no tape */
     .health-bar-container {
         top: 90px;
-        /* Más arriba, cerca del header */
         right: 50%;
-        /* Centrado relativo o a la derecha */
         transform: translateX(50%);
-        /* Truco para centrar si se desea, o déjalo en right: 20px */
         width: max-content;
     }
 
-    /* Reducir barra de vida */
     .health-bar {
         width: 100px;
     }
 
-    /* Ajuste de Botones */
     .nav-btn {
         width: 100%;
-        /* Botones ocupan todo el ancho en móvil */
         text-align: center;
         padding: 10px;
         font-size: 0.8rem;
@@ -293,12 +255,9 @@ body {
 
     .mailbox-nav {
         gap: 10px;
-        /* Menos espacio entre botones */
     }
 
-    /* Buscador */
     .filter-bar {
         justify-content: center;
-        /* Centrar buscador */
     }
 }

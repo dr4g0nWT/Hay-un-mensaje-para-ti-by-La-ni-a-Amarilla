@@ -7,7 +7,6 @@
     text-align: left;
     border: 1px solid #eee;
     display: none;
-    /* Oculto por defecto */
 }
 
 .requirement {
@@ -22,12 +21,9 @@
     color: #2ecc71;
 }
 
-/* Verde */
 .requirement.invalid {
     color: #e74c3c;
 }
-
-/* Rojo */
 
 .requirement::before {
     content: '○';

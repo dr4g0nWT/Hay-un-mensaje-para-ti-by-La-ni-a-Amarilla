@@ -7,7 +7,6 @@
     height: 60px;
     border-radius: 50%;
     background-color: var(--mb-orange-btn);
-    /* #F7A338 */
     color: white;
     font-size: 2rem;
     border: none;
@@ -23,23 +22,15 @@
 
 .fab-btn:hover {
     background-color: var(--mb-orange-dark);
-    /* #d48625 */
     transform: scale(1.1) rotate(90deg);
 }
 
 /* === COMPOSE MODAL === */
-
-/* Ajustamos el tamaño específico para el Compose Modal */
 #composeModal .modal-content {
-    /* RESPONSIVE SIZE: Más ancho en pantallas grandes */
     width: 80%;
     max-width: 1000px;
-    /* Aumentado de 700px a 1000px para pantallas grandes */
-
-    /* ALTURA DINÁMICA: Ocupar una buena parte de la altura */
     height: 85vh;
     max-height: 900px;
-
     background-color: #fffaf0;
     border-radius: 15px;
     border: 2px solid var(--mb-orange-btn, #F7A338);
@@ -47,10 +38,8 @@
     flex-direction: column;
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
     overflow: hidden;
-    /* Evitar scroll en el contenedor principal, queremos scroll dentro si hace falta */
 }
 
-/* Header más elaborado */
 #composeModal .modal-header {
     background-color: var(--mb-table-header, #ffdab9);
     padding: 20px 30px;
@@ -59,7 +48,6 @@
     align-items: center;
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
     flex-shrink: 0;
-    /* No encoger header */
 }
 
 #composeModal .modal-header h3 {
@@ -83,41 +71,32 @@
     color: #d32f2f;
 }
 
-/* Body con Flexbox para que el FORM ocupe todo */
 #composeModal .modal-body {
     padding: 30px;
     flex: 1;
-    /* Ocupa el espacio restante */
     display: flex;
     flex-direction: column;
     font-family: 'Poppins', sans-serif;
     overflow-y: auto;
-    /* Scroll si el contenido es muy alto en pantallas pequeñas */
 }
 
-/* El formulario también debe ser flex para estirar el textarea */
 #composeForm {
     display: flex;
     flex-direction: column;
     flex: 1;
-    /* Crece para llenar el body */
     height: 100%;
     width: 80%;
 }
 
-/* Form Styles */
 .form-group {
     margin-bottom: 20px;
 }
 
-/* Grupo especial para el textarea que debe crecer */
 .form-group.full-height {
     flex: 1;
-    /* Crece para ocupar todo el espacio vertical disponible */
     display: flex;
     flex-direction: column;
     margin-bottom: 0;
-    /* Quitamos margen abajo porque el footer da espacio */
 }
 
 .form-group label {
@@ -149,16 +128,12 @@
     background-color: #fff;
 }
 
-/* Textarea que llena su contenedor padre (.form-group.full-height) */
 #composeModal textarea {
     flex: 1;
-    /* Crece para llenar el form-group */
     resize: none;
-    /* Quitamos resize manual para que sea responsivo automático */
     min-height: 200px;
 }
 
-/* Footer fijo abajo */
 #composeModal .modal-footer {
     padding: 20px 30px;
     display: flex;
@@ -168,7 +143,6 @@
     border-top: 1px solid rgba(0, 0, 0, 0.05);
     flex-shrink: 0;
     background-color: #fffaf0;
-    /* Asegurar fondo opaco */
 }
 
 .send-btn {
@@ -197,8 +171,6 @@
 }
 
 /* --- RESPONSIVE --- */
-
-/* Pantallas Medianas (Laptops pequeñas / Tablets grandes) */
 @media (max-width: 1200px) {
     #composeModal .modal-content {
         width: 85%;
@@ -206,7 +178,6 @@
     }
 }
 
-/* Tablets Portrait */
 @media (max-width: 800px) {
     #composeModal .modal-content {
         width: 95%;
@@ -214,17 +185,14 @@
     }
 }
 
-/* Móviles */
 @media (max-width: 500px) {
     #composeModal .modal-content {
         width: 100%;
         height: 100%;
-        /* Full screen */
         border-radius: 0;
         border: none;
     }
 
-    /* En móvil, los inputs un poco menos padding para ganar espacio */
     .form-group input,
     .form-group textarea {
         padding: 10px;

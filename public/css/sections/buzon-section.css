@@ -3,11 +3,11 @@
 .buzon-section {
     width: 100%;
     min-height: 100vh;
-    /* Adjust height as needed */
     position: relative;
     background-image:
         linear-gradient(to bottom, rgba(255, 238, 176, 0.6), rgba(255, 238, 176, 0.2)),
-        url('../assets/img/buzon-fondo.jpg');
+        url('../../assets/img/buzon-fondo.jpg');
+    /* Adjusted path */
     background-size: cover;
     background-position: center;
     image-rendering: pixelated;
@@ -32,7 +32,6 @@
 .buzon-title {
     font-family: 'Georgia', serif;
     color: #e67e22;
-    /* Matches mailbox title color */
     font-size: 3rem;
     font-weight: bold;
     margin: 0;

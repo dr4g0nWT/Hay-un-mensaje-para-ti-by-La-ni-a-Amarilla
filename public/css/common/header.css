@@ -1,0 +1,132 @@
+/* =========================================
+   PUBLIC/CSS/COMMON/HEADER.CSS
+   ========================================= */
+
+/* --- HEADER FIJO Y DINÁMICO --- */
+.top-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 60px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 999;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.menu-icon {
+    width: 35px;
+    height: auto;
+    cursor: pointer;
+    transition: filter 0.3s;
+}
+
+.logo-img {
+    width: 100px;
+    height: auto;
+    border-radius: 50%;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.team-name {
+    font-family: 'Courier New', monospace;
+    font-weight: bold;
+    letter-spacing: 2px;
+    color: var(--text-cream);
+    text-transform: uppercase;
+    transition: color 0.3s ease;
+}
+
+/* ESTADO OSCURO */
+.top-header.header-dark .team-name {
+    color: #4a3b2a;
+    font-weight: 800;
+}
+
+.top-header.header-dark .menu-icon {
+    filter: invert(1) brightness(0.2);
+}
+
+/* === MENÚ DESPLEGABLE === */
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 60px;
+    width: 250px;
+    background-color: #fffaf0;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 0 0 15px 15px;
+    padding: 20px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-20px);
+    transition: all 0.3s ease;
+    z-index: 998;
+}
+
+.dropdown-menu.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.dropdown-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.dropdown-menu li {
+    margin-bottom: 15px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    padding-bottom: 10px;
+}
+
+.dropdown-menu li:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+.menu-link {
+    text-decoration: none;
+    color: #4a3b2a;
+    font-family: var(--font-main);
+    font-weight: bold;
+    font-size: 1rem;
+    display: block;
+    transition: color 0.2s;
+}
+
+.menu-link:hover {
+    color: var(--orange-btn);
+    transform: translateX(5px);
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 768px) {
+    .top-header {
+        padding: 15px 25px;
+    }
+
+    .logo-img {
+        width: 70px;
+    }
+
+    .menu-icon {
+        width: 28px;
+    }
+
+    .dropdown-menu {
+        left: 25px;
+        width: 200px;
+    }
+}

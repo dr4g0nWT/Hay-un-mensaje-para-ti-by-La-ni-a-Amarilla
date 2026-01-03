@@ -1,0 +1,58 @@
+/* =========================================
+   PUBLIC/CSS/COMMON/GLOBAL.CSS
+   ========================================= */
+
+:root {
+    --orange-btn: #F7A338;
+    --text-white: #ffffff;
+    --text-cream: #FFFACD;
+    --font-main: 'Poppins', sans-serif;
+    --font-title: 'Abril Fatface', cursive;
+
+    /* Variables adicionales que puedan surgir */
+    --mb-orange-btn: #F7A338;
+    --mb-orange-dark: #d48625;
+    --mb-text: #5d4037;
+    --mb-table-header: #ffdab9;
+}
+
+/* === RESET BÁSICO === */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    font-family: var(--font-main);
+    color: var(--text-white);
+    overflow-x: hidden;
+    /* Evita scroll lateral no deseado */
+}
+
+/* === SCROLL CONTAINER (GLOBAL SNAP) === */
+.scroll-container {
+    height: 100vh;
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
+}
+
+/* === SECCIÓN EN SNAP === */
+.snap-section {
+    height: 100vh;
+    width: 100%;
+    scroll-snap-align: start;
+    position: relative;
+    overflow: hidden;
+}
+
+/* === UTILITIES === */
+.hidden {
+    display: none;
+}
