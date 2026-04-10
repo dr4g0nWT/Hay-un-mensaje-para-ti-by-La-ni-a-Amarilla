@@ -105,6 +105,7 @@ Si tienes una idea para mejorar la plataforma o has encontrado un error, sigue e
    * Gabriela Dueñas
    * Lidia Parra
    * Alejrandra Redondo
+   * Juliana Saboya
    * Ainhoa Torres
    * Yihang Xia
      
