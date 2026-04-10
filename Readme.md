@@ -65,7 +65,7 @@ El proyecto sigue el patrón de arquitectura **Modelo-Vista-Controlador (MVC)** 
 
 ## 🤝 Contribución
 
-¡Las contribuciones son lo que hacen a la comunidad de código abierto un lugar increíble para aprender, inspirar y crear! Cualquier contribución que hagas al **Equipo 5** será **muy apreciada**.
+¡Las contribuciones son lo que hacen a la comunidad de código abierto un lugar increíble para aprender, inspirar y crear! Cualquier contribución que hagas al **Equipo 5 de la URJC** será **muy apreciada**.
 
 Si tienes una idea para mejorar la plataforma o has encontrado un error, sigue estos pasos para colaborar:
 
@@ -102,4 +102,10 @@ Si tienes una idea para mejorar la plataforma o has encontrado un error, sigue e
 
 ## ✒️ Autores
 * Equipo 5 - Desarrollo y Diseño
+   * Gabriela Dueñas
+   * Lidia Parra
+   * Alejrandra Redondo
+   * Ainhoa Torres
+   * Yihang Xia
+     
 * dr4g0nWT - Desarrollo
